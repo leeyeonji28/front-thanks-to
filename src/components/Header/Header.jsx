@@ -4,7 +4,7 @@ import { FaBell, FaUser } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between mb-5">
       <h1 className="text-4xl font-bold text-white">Thanks to</h1>
       <ul className="flex">
         <li className="mr-6">

@@ -9,11 +9,13 @@ function App() {
       <Router>
         <div className="w-10/12 h-4/5 m-auto">
           <Header />
-          <div className="bg-gray-50 ">
-            {/* <SideNav /> */}
-            <Routes>
-              <Route path="/" element={<Main />}></Route>
-            </Routes>
+          <div className="flex w-full h-full ">
+            <SideNav />
+            <div className="bg-gray-200">
+              <Routes>
+                <Route path="/" element={<Main />}></Route>
+              </Routes>
+            </div>
           </div>
         </div>
       </Router>
