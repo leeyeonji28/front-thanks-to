@@ -8,9 +8,9 @@ const HeaderSerach = () => {
           <input
             type="text"
             placeholder="Search…"
-            className="input input-bordered"
+            className="input input-bordered border-0"
           />
-          <button className="btn btn-square bg-rose-500 hover:bg-rose-300">
+          <button className="btn btn-square bg-rose-500 hover:bg-rose-300 border-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"

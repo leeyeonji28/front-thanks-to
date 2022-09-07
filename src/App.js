@@ -11,7 +11,7 @@ function App() {
           <Header />
           <div className="flex ">
             <SideNav />
-            <div className="bg-gray-200">
+            <div className="rounded-lg overflow-scroll">
               <Routes>
                 <Route path="/" element={<Main />}></Route>
               </Routes>
