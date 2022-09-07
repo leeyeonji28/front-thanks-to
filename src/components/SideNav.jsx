@@ -5,7 +5,7 @@ import { FiLogIn } from "react-icons/fi";
 
 const SideNav = () => {
   return (
-    <div className="flex flex-col justify-between w-20 h-full rounded-lg p-4 mr-5 bg-white">
+    <div className="flex flex-col justify-between w-20 h-[855px] rounded-lg p-4 mr-5 bg-white">
       <ul>
         <li className="w-12 h-12 rounded-lg text-gray-300 p-3 mb-6 hover:text-rose-500 cursor-pointer">
           <AiFillHome className="w-6 h-6" />

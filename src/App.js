@@ -5,11 +5,11 @@ import SideNav from "./components/SideNav";
 
 function App() {
   return (
-    <div className="w-full h-screen bg-gradient-to-r from-rose-200 to-rose-100">
+    <div className="relative w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100">
       <Router>
-        <div className="w-10/12 h-4/5 m-auto">
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
           <Header />
-          <div className="flex w-full h-full ">
+          <div className="flex ">
             <SideNav />
             <div className="bg-gray-200">
               <Routes>
