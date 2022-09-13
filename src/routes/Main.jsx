@@ -4,6 +4,7 @@ import MainFollow from "../components/MainContent/MainFollow";
 import MainGraph from "../components/MainContent/MainGraph";
 import MainList from "../components/MainContent/MainList";
 import MainProfile from "../components/MainContent/MainProfile";
+import { HiChevronDoubleDown } from "react-icons/hi";
 
 const Main = () => {
   return (
@@ -12,8 +13,11 @@ const Main = () => {
         <div className="bg-white rounded-lg p-7">
           <MainGraph />
         </div>
-        <div className="bg-white rounded-lg">
+        <div className=" bg-white rounded-lg p-7 overflow-y-scroll scrollbar-hide">
           <MainList />
+          <div className="absolute top-[860px] left-[530px] animate-bounce">
+            <HiChevronDoubleDown className="text-3xl text-gray-300" />
+          </div>
         </div>
       </div>
       <div className="grid grid-rows-[240px_350px_225px] gap-5">
