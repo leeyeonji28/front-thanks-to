@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { CgSpinner } from "react-icons/cg";
 
 const MainList = () => {
   // 데모 데이터
@@ -47,6 +49,21 @@ const MainList = () => {
       ],
     },
   ];
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  if (error) {
+    return <span>{error.message}</span>;
+  }
+  if (isLoading) {
+    return (
+      <span>
+        <CgSpinner />
+        Loading...
+      </span>
+    );
+  }
 
   return (
     <div>
