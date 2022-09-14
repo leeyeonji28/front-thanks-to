@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./routes/Main";
 import Header from "./components/Header/Header";
 import SideNav from "./components/SideNav";
+import Info from "./routes/Info";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <div className="rounded-lg ">
               <Routes>
                 <Route path="/" element={<Main />}></Route>
+                <Route path="/info" element={<Info />}></Route>
               </Routes>
             </div>
           </div>
