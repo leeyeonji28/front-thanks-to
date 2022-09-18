@@ -47,13 +47,13 @@ const MainFollow = () => {
   ];
   return (
     <div className="p-7">
-      <h3 className="mb-2">
+      <h3 className="mb-5">
         <b className="text-xl mr-2">Follow</b>
         <span className="text-gray-400">{followData.length}</span>
       </h3>
       <ul className="flex flex-wrap justify-around">
         {followData.map((follow, i) => (
-          <li key={i} className="w-16 shadow-md mb-2 rounded-lg">
+          <li key={i} className="w-12 shadow-md mb-4 rounded-lg">
             <img src={follow.userImg} alt="" />
           </li>
         ))}
