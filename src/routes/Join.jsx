@@ -85,7 +85,7 @@ const Join = () => {
             </div>
           </div>
           <textarea
-            placeholder="Nick Name"
+            placeholder="About you"
             className="block w-[350px] p-4 mb-12 rounded-lg border border-gray-300 outline-rose-500"
           />
           <button className="w-[350px] p-4 bg-rose-500 text-white rounded-lg ">
