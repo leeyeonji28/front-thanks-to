@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const Join = () => {
   const [imageSrc, setImageSrc] = useState();
   const [files, setFiles] = useState([]);
+  const [showPwd, setShowPwd] = useState(false);
+
+  const togglePass = (e) => {
+    e.preventDefault();
+
+    setShowPwd(!showPwd);
+  };
 
   const encodeFileToBase64 = (fileBlob) => {
     const reader = new FileReader();
@@ -38,11 +46,24 @@ const Join = () => {
             placeholder="Id"
             className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
           />
-          <input
-            type="text"
-            placeholder="Passoword"
-            className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
-          />
+          <div className="relative">
+            <input
+              type={showPwd ? "text" : "Password"}
+              placeholder="Password"
+              className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+            />
+            <div
+              onClick={(e) => {
+                togglePass(e);
+              }}
+            >
+              {showPwd ? (
+                <FaEye className="absolute top-5 right-5 text-gray-800 cursor-pointer" />
+              ) : (
+                <FaEyeSlash className="absolute top-5 right-5 text-gray-400 cursor-pointer" />
+              )}
+            </div>
+          </div>
           <input
             type="text"
             placeholder="Nick Name"
