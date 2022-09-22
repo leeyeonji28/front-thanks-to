@@ -9,6 +9,9 @@ import Header from "../components/Header/Header";
 import SideNav from "../components/SideNav";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { CgSpinner } from "react-icons/cg";
 
 // const config = {
 //   headers: {
@@ -16,24 +19,34 @@ import axios from "axios";
 //   },
 // };
 
-const Main = () => {
-  // const [user, setUser] = useState(null);
+const Main = ({ access }) => {
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
 
-  // const getUser = async (res) => {
-  //   const data = await axios({
-  //     url: "/user",
-  //     method: "GET",
-  //     headers: config,
-  //   });
-  //   setUser(res.data);
-  // };
+  useEffect(() => {
+    if (access !== null) {
+      setIsLogin(true);
+    } else {
+      alert("로그인 후 이용해주세요.");
+      navigate("/login");
+    }
+  }, []);
+
+  if (isLogin === false) {
+    return (
+      <div className="flex justify-center items-center w-full h-full">
+        <p className="text-rose-500 text-2xl">
+          <CgSpinner className="m-auto mb-2 animate-spin text-3xl" />
+          Loading
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
       <Header />
       <div className="flex ">
-        {/* <button onClick={getUser}>유저 정보 확인</button>
-        <div>user : {user}</div> */}
         <SideNav />
         <div className="rounded-lg "></div>
         <div className="grid grid-cols-[830px_320px] gap-5 w-[1170px] h-[855px] ">
