@@ -7,12 +7,33 @@ import MainProfile from "../components/MainContent/MainProfile";
 import { HiChevronDoubleDown } from "react-icons/hi";
 import Header from "../components/Header/Header";
 import SideNav from "../components/SideNav";
+import { useState } from "react";
+import axios from "axios";
+
+// const config = {
+//   headers: {
+//     Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+//   },
+// };
 
 const Main = () => {
+  // const [user, setUser] = useState(null);
+
+  // const getUser = async (res) => {
+  //   const data = await axios({
+  //     url: "/user",
+  //     method: "GET",
+  //     headers: config,
+  //   });
+  //   setUser(res.data);
+  // };
+
   return (
     <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
       <Header />
       <div className="flex ">
+        {/* <button onClick={getUser}>유저 정보 확인</button>
+        <div>user : {user}</div> */}
         <SideNav />
         <div className="rounded-lg "></div>
         <div className="grid grid-cols-[830px_320px] gap-5 w-[1170px] h-[855px] ">

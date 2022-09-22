@@ -1,58 +1,82 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import base64 from "base-64";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
-  const [pwd, setPwd] = useState("");
-  // const [member, setMember] = useState({});
+  const [userPwd, setUserPwd] = useState("");
+  const [showPwd, setShowPwd] = useState(false);
+  const navigate = useNavigate();
 
-  // const config = {
-  //   headers: {
-  //     Authorization: "Beadrer " + localStorage.getItem("jwtToken"),
-  //   },
-  // };
+  const togglePass = (e) => {
+    e.preventDefault();
+
+    setShowPwd(!showPwd);
+  };
 
   const login = async (res) => {
-    try {
-      const data = await axios({
-        url: "http://localhost:8092/login",
-        method: "POST",
-        headers: {
-          MySecretKey1$1$1234: localStorage.getItem("Token"),
-        },
-        data: {
-          username: userId,
-          password: pwd,
-        },
-        // headers: {
-        //   Authorization: "Bearer ${}",
-        // },
-      });
-      alert("로그인이 완료되었습니다.");
-    } catch (e) {
-      console.log(e);
-      // alert("Id 또는 Password를 다시 확인해 주세요.");
-      alert("로그인 실패!");
-    }
-  };
+    if (userId !== "" && userPwd !== "") {
+      try {
+        const loginData = await axios({
+          url: "/login",
+          method: "POST",
+          // headers: {
+          //   MySecretKey1$1$1234: localStorage.getItem("Token"),
+          // },
+          data: {
+            username: userId,
+            password: userPwd,
+          },
+          // headers: {
+          //   Authorization: "Bearer ${}",
+          // },
+        });
+        alert("로그인이 완료되었습니다.");
+        // console.log(JSON.stringify(loginData.config.data));
+        console.log(loginData);
+        const jwtToken = loginData.headers.authorization.substring(
+          loginData.headers.authorization.indexOf(" ") + 1,
+          loginData.headers.authorization.length
+        );
+        const payload = jwtToken.substring(
+          jwtToken.indexOf(".") + 1,
+          jwtToken.lastIndexOf(".")
+        );
+        const dec = JSON.parse(base64.decode(payload));
 
-  const loginCheck = () => {
-    if (userId === "") {
+        localStorage.setItem("Token", jwtToken);
+        localStorage.setItem("id", dec.id);
+
+        console.log(jwtToken);
+        console.log(dec.id);
+        navigate("/home");
+      } catch (e) {
+        console.log(e);
+        alert("Id 또는 Password를 다시 확인해 주세요.");
+        // alert("로그인 실패하였습니다.");
+      }
+    } else if (userId === "") {
       alert("Id를 입력해 주세요!");
-    } else if (pwd === "") {
+    } else if (userPwd === "") {
       alert("Password를 입력해 주세요!");
     }
-
-    login();
   };
+
+  // console.log(loginData.data);
 
   return (
     <div className="flex justify-center items-center w-full h-full">
       <div className="w-[350px] text-center">
         <h1 className="mb-14 text-5xl text-white font-bold">Login</h1>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            login();
+          }}
+        >
           <input
             type="text"
             placeholder="Id"
@@ -62,23 +86,36 @@ const Login = () => {
               setUserId(e.target.value);
             }}
           />
-          <input
-            type="password"
-            placeholder="Passoword"
-            autoComplete="off"
-            value={pwd}
-            className="w-full p-4 mb-4 rounded-lg outline-rose-500"
-            onChange={(e) => {
-              setPwd(e.target.value);
-            }}
-          />
+          <div className="relative">
+            <input
+              type={showPwd ? "text" : "Password"}
+              placeholder="Password"
+              autoComplete="off"
+              value={userPwd}
+              className="w-full p-4 mb-4 rounded-lg outline-rose-500"
+              onChange={(e) => {
+                setUserPwd(e.target.value);
+              }}
+            />
+            <div
+              onClick={(e) => {
+                togglePass(e);
+              }}
+            >
+              {showPwd ? (
+                <FaEye className="absolute top-5 right-5 text-gray-800 cursor-pointer" />
+              ) : (
+                <FaEyeSlash className="absolute top-5 right-5 text-gray-400 cursor-pointer" />
+              )}
+            </div>
+          </div>
           <button
             className="w-full p-4 bg-rose-500 text-white rounded-lg"
-            onSubmit={(e) => {
-              e.preventDefault();
-              loginCheck();
-            }}
-            onClick={loginCheck}
+            // onSubmit={(e) => {
+            //   e.preventDefault();
+            //   login();
+            // }}
+            onClick={login}
           >
             Login
           </button>
