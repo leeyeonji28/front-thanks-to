@@ -26,8 +26,6 @@ const Main = () => {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
-  console.log("access : " + access);
-
   useEffect(() => {
     if (access !== null) {
       setIsLogin(true);

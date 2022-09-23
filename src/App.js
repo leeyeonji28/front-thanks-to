@@ -19,7 +19,7 @@ function App() {
   // const [user, setUser] = useRecoilState(userState);
 
   return (
-    <div className="relative w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100">
+    <div className="relative w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100 overflow-hidden">
       <Router>
         <Routes>
           <Route path="/login" element={<Login />}></Route>

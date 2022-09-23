@@ -1,5 +1,6 @@
 import React from "react";
 import proimg from "../../assets/images/ding.png";
+import CreateModal from "../PostContent/CreateModal";
 
 const MainProfile = () => {
   const userData = {
@@ -7,6 +8,7 @@ const MainProfile = () => {
     userSay: "매일매일 감사한 날의 기록 🥰",
     userImg: proimg,
   };
+
   return (
     <div className="flex justify-center items-center h-[240px]">
       <div className="text-center">
@@ -17,9 +19,14 @@ const MainProfile = () => {
         />
         <b className="block text-xl mt-5">{userData.userName}</b>
         <p>{userData.userSay}</p>
-        <button className="btn btn-sm mt-5 bg-rose-500 border-0 hover:bg-rose-300">
-          Create
-        </button>
+        <label
+          htmlFor="my-modal-3"
+          className="btn btn-sm mt-5 bg-rose-500 border-0 hover:bg-rose-300"
+        >
+          Create Post
+        </label>
+        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+        <CreateModal userImg={userData.userImg} userName={userData.userName} />
       </div>
     </div>
   );

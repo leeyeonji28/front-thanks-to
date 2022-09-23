@@ -17,7 +17,7 @@ const SideNav = () => {
     <div className="flex flex-col justify-between w-20 h-[855px] rounded-lg p-4 mr-5 bg-white">
       <ul>
         <li className="group relative w-12 h-12 rounded-lg text-gray-300 p-3 mb-6 hover:text-rose-500 cursor-pointer">
-          <Link to={`/`}>
+          <Link to={`/home`}>
             <AiFillHome className="w-6 h-6" />
           </Link>
           <span className="absolute hidden top-0 left-12 p-2 bg-white shadow-lg text-gray-800 group-hover:block z-10">
