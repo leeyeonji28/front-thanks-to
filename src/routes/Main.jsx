@@ -12,6 +12,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { CgSpinner } from "react-icons/cg";
+import { useRecoilValue } from "recoil";
+import { loginState } from "../recoil/loginState";
 
 // const config = {
 //   headers: {
@@ -19,9 +21,12 @@ import { CgSpinner } from "react-icons/cg";
 //   },
 // };
 
-const Main = ({ access }) => {
+const Main = () => {
+  const access = useRecoilValue(loginState);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+
+  console.log("access : " + access);
 
   useEffect(() => {
     if (access !== null) {

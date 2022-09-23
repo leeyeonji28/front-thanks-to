@@ -23,20 +23,14 @@ const Login = () => {
         const loginData = await axios({
           url: "/login",
           method: "POST",
-          // headers: {
-          //   MySecretKey1$1$1234: localStorage.getItem("Token"),
-          // },
           data: {
             username: userId,
             password: userPwd,
           },
-          // headers: {
-          //   Authorization: "Bearer ${}",
-          // },
         });
         alert("로그인이 완료되었습니다.");
-        // console.log(JSON.stringify(loginData.config.data));
-        console.log(loginData);
+
+        // console.log(loginData);
         const jwtToken = loginData.headers.authorization.substring(
           loginData.headers.authorization.indexOf(" ") + 1,
           loginData.headers.authorization.length
@@ -50,13 +44,12 @@ const Login = () => {
         localStorage.setItem("Token", jwtToken);
         localStorage.setItem("id", dec.id);
 
-        console.log(jwtToken);
-        console.log(dec.id);
+        // console.log(jwtToken);
+        // console.log(dec.id);
         navigate("/home");
       } catch (e) {
         console.log(e);
         alert("Id 또는 Password를 다시 확인해 주세요.");
-        // alert("로그인 실패하였습니다.");
       }
     } else if (userId === "") {
       alert("Id를 입력해 주세요!");
@@ -64,8 +57,6 @@ const Login = () => {
       alert("Password를 입력해 주세요!");
     }
   };
-
-  // console.log(loginData.data);
 
   return (
     <div className="flex justify-center items-center w-full h-full">
@@ -111,10 +102,6 @@ const Login = () => {
           </div>
           <button
             className="w-full p-4 bg-rose-500 text-white rounded-lg"
-            // onSubmit={(e) => {
-            //   e.preventDefault();
-            //   login();
-            // }}
             onClick={login}
           >
             Login
