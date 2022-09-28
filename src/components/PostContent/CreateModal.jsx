@@ -1,11 +1,63 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { HiLockOpen, HiLockClosed } from "react-icons/hi";
 
-const CreateModal = ({ userImg, userName }) => {
+const CreateModal = ({ userImg, userName, showModal }) => {
   const [imageSrc, setImageSrc] = useState();
   const [postLock, setPostLock] = useState(false);
   const [files, setFiles] = useState([]);
+  const [userId, setUserId] = useState();
+
+  const [postValue, setPostValue] = useState({
+    postImg: "",
+    postTitle: "",
+    postContent: "",
+  });
+
+  // userId
+  useEffect(() => {
+    setUserId(localStorage.getItem("id"));
+  }, []);
+
+  const postCheck = () => {
+    if (postValue.postTitle === "") {
+      alert("제목을 입력해주세요.");
+    } else if (postValue.postContent === "") {
+      alert("내용을 입력해주세요.");
+    }
+  };
+
+  const postCreate = async () => {
+    const formData = new FormData();
+    formData.append("postImage", files.length && files[0].uploadedFile);
+
+    const value = {
+      postImg: "",
+      postTitle: postValue.postTitle,
+      postContent: postValue.postContent,
+    };
+
+    const blob = new Blob([JSON.stringify(value)], {
+      type: "application/json",
+    });
+
+    formData.append("createPostDto", blob);
+
+    const createData = await axios({
+      url: `http://localhost:8092/api/${userId}/post/create`,
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("Token"),
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    });
+
+    alert("포스팅이 완료되었습니다.");
+    showModal();
+  };
 
   const encodeFileToBase64 = (fileBlob) => {
     const reader = new FileReader();
@@ -33,15 +85,17 @@ const CreateModal = ({ userImg, userName }) => {
   };
 
   return (
-    <div className="modal w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20">
       {/* 모달 이너 */}
-      <div className="modal-box relative max-w-xl overflow-hidden">
-        <label
-          htmlFor="my-modal-3"
+      <div className="modal-box relative max-w-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+        <div
+          onClick={() => {
+            showModal();
+          }}
           className="btn btn-sm btn-ghost absolute left-2 top-2 text-2xl"
         >
           ✕
-        </label>
+        </div>
         {/* 프로필 */}
         <div className="my-8 text-left">
           <img
@@ -51,7 +105,13 @@ const CreateModal = ({ userImg, userName }) => {
           />
           <b className="text-lg">{userName}</b>
         </div>
-        <form action="">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            postCheck();
+            postCreate();
+          }}
+        >
           {/* 이미지 폼 */}
           <div className="relative">
             <div className="flex justify-center items-center w-full h-60 mb-4 border border-gray-300 rounded-lg cursor-pointer z-10">
@@ -78,7 +138,6 @@ const CreateModal = ({ userImg, userName }) => {
                 handleUpload(e);
               }}
               className="hidden"
-              // className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
             />
             <div
               className={
@@ -98,11 +157,23 @@ const CreateModal = ({ userImg, userName }) => {
           <input
             type="text"
             placeholder="오늘의 제목!"
+            onChange={(e) => {
+              setPostValue({
+                ...postValue,
+                postTitle: e.target.value,
+              });
+            }}
             className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
           />
           {/* 내용 입력 폼 */}
           <textarea
             placeholder={userName + "님의 오늘은 어떤 감사한 일이 있었나요?"}
+            onChange={(e) => {
+              setPostValue({
+                ...postValue,
+                postContent: e.target.value,
+              });
+            }}
             className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
           />
           {/* 공개여부 체크 */}
@@ -121,13 +192,18 @@ const CreateModal = ({ userImg, userName }) => {
           </label>
           <input
             type="checkbox"
-            // defaultChecked
             id="lock"
             onChange={lockCheck}
             className="hidden"
           />
           {/* 전송 버튼 */}
-          <button className="w-full p-4 mt-10 bg-rose-500 text-white rounded-lg ">
+          <button
+            className="w-full p-4 mt-10 bg-rose-500 text-white rounded-lg"
+            onClick={() => {
+              postCheck();
+              postCreate();
+            }}
+          >
             Submit
           </button>
         </form>

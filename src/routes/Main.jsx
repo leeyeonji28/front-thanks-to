@@ -8,7 +8,6 @@ import { HiChevronDoubleDown } from "react-icons/hi";
 import Header from "../components/Header/Header";
 import SideNav from "../components/SideNav";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { CgSpinner } from "react-icons/cg";

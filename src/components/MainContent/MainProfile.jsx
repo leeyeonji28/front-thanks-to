@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import proimg from "../../assets/images/ding.png";
 import CreateModal from "../PostContent/CreateModal";
 
 const MainProfile = () => {
+  const [modal, setModal] = useState(false);
+
+  function showModal() {
+    setModal(!modal);
+  }
+
+  console.log("modal : " + modal);
+
   const userData = {
     userName: "DingDong",
     userSay: "매일매일 감사한 날의 기록 🥰",
@@ -19,14 +27,21 @@ const MainProfile = () => {
         />
         <b className="block text-xl mt-5">{userData.userName}</b>
         <p>{userData.userSay}</p>
-        <label
-          htmlFor="my-modal-3"
+        <div
+          onClick={() => {
+            showModal();
+          }}
           className="btn btn-sm mt-5 bg-rose-500 border-0 hover:bg-rose-300"
         >
           Create Post
-        </label>
-        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-        <CreateModal userImg={userData.userImg} userName={userData.userName} />
+        </div>
+        {modal === true ? (
+          <CreateModal
+            userImg={userData.userImg}
+            userName={userData.userName}
+            showModal={showModal}
+          />
+        ) : null}
       </div>
     </div>
   );
