@@ -197,13 +197,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
             className="hidden"
           />
           {/* 전송 버튼 */}
-          <button
-            className="w-full p-4 mt-10 bg-rose-500 text-white rounded-lg"
-            onClick={() => {
-              postCheck();
-              postCreate();
-            }}
-          >
+          <button className="w-full p-4 mt-10 bg-rose-500 text-white rounded-lg">
             Submit
           </button>
         </form>

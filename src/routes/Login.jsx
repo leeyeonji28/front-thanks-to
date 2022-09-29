@@ -100,10 +100,7 @@ const Login = () => {
               )}
             </div>
           </div>
-          <button
-            className="w-full p-4 bg-rose-500 text-white rounded-lg"
-            onClick={login}
-          >
+          <button className="w-full p-4 bg-rose-500 text-white rounded-lg">
             Login
           </button>
         </form>
