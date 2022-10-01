@@ -22,19 +22,19 @@ import { loginState } from "../recoil/loginState";
 
 const Main = () => {
   const access = useRecoilValue(loginState);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (access !== null) {
-      setIsLogin(true);
+      setIsLogin(false);
     } else {
       alert("로그인 후 이용해주세요.");
       navigate("/login");
     }
   }, []);
 
-  if (isLogin === false) {
+  if (isLogin) {
     return (
       <div className="flex justify-center items-center w-full h-full">
         <p className="text-rose-500 text-2xl">

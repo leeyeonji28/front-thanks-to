@@ -9,6 +9,7 @@ import { useRecoilState } from "recoil";
 import { loginState } from "./recoil/loginState";
 import AuthRoute from "./components/AuthRoute";
 import { useState } from "react";
+import Post from "./routes/Post";
 // import { RecoilRoot, useRecoilState } from "recoil";
 // import { userState } from "./recoil/user";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/join" element={<Join />}></Route>
           <Route path="/home" element={<Main />}></Route>
           <Route path="/info" element={<Info />}></Route>
+          <Route path="/post" element={<Post />}></Route>
         </Routes>
       </Router>
     </div>
