@@ -9,8 +9,6 @@ const MainProfile = () => {
     setModal(!modal);
   }
 
-  console.log("modal : " + modal);
-
   const userData = {
     userName: "DingDong",
     userSay: "매일매일 감사한 날의 기록 🥰",

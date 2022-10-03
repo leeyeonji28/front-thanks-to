@@ -9,17 +9,19 @@ const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [userId, setUserId] = useState();
+  const [getPostData, setGetPostData] = useState([]);
 
   const getPostList = async () => {
     try {
       const json = await axios({
-        url: `http://localhost:8092/api/post/detail/1`,
+        url: `http://localhost:8092/api/post/list/all`,
         method: "GET",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("Token"),
         },
       });
 
+      setGetPostData(json.data);
       setIsLoading(false);
     } catch (e) {
       setError(e);
@@ -30,6 +32,8 @@ const Post = () => {
     setUserId(localStorage.getItem("id"));
     getPostList();
   }, []);
+
+  console.log(getPostData);
 
   if (error) {
     return (
@@ -56,6 +60,11 @@ const Post = () => {
         <div className="rounded-lg "></div>
         <div className="w-[1170px] h-[855px] bg-white rounded-lg">
           <div className="p-7 text-center">Post</div>
+          {/* <ul>
+            {getPostData.map((data, index) => (
+              <li key={index}>{data}</li>
+            ))}
+          </ul> */}
         </div>
       </div>
     </div>
