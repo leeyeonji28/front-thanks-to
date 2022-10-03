@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import SideNav from "../components/SideNav";
 import { CgSpinner } from "react-icons/cg";
 import axios from "axios";
+import { url } from "../utile/url";
 
 const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ const Post = () => {
   const getPostList = async () => {
     try {
       const json = await axios({
-        url: `http://localhost:8092/api/post/list/all`,
+        url: `${url}/api/post/list/all`,
         method: "GET",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("Token"),

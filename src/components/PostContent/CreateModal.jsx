@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { HiLockOpen, HiLockClosed } from "react-icons/hi";
+import { url } from "../../utile/url";
 
 const CreateModal = ({ userImg, userName, showModal }) => {
   const [imageSrc, setImageSrc] = useState();
@@ -46,7 +47,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
     formData.append("createPostDto", blob);
 
     const createData = await axios({
-      url: `http://localhost:8092/api/${userId}/post/create`,
+      url: `${url}/api/${userId}/post/create`,
       method: "POST",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("Token"),
