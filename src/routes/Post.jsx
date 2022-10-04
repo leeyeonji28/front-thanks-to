@@ -5,6 +5,7 @@ import SideNav from "../components/SideNav";
 import { CgSpinner } from "react-icons/cg";
 import axios from "axios";
 import { url } from "../utile/url";
+import PostBox from "../components/PostContent/PostBox";
 
 const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,9 +18,10 @@ const Post = () => {
       const json = await axios({
         url: `${url}/api/post/list/all`,
         method: "GET",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("Token"),
-        },
+        // headers: {
+        //   Authorization: "Bearer " + localStorage.getItem("Token"),
+        //   cont
+        // },
       });
 
       setGetPostData(json.data);
@@ -58,14 +60,19 @@ const Post = () => {
       <Header />
       <div className="flex ">
         <SideNav />
-        <div className="rounded-lg "></div>
-        <div className="w-[1170px] h-[855px] bg-white rounded-lg">
-          <div className="p-7 text-center">Post</div>
-          {/* <ul>
+        <div className="w-[1170px] h-[855px] rounded-lg text-center overflow-scroll">
+          <div className="grid grid-cols-3">
             {getPostData.map((data, index) => (
-              <li key={index}>{data}</li>
+              <PostBox
+                key={index}
+                postImg={data.postImg}
+                postTitle={data.postTitle}
+                postContent={data.postContent}
+                postDate={data.postDate}
+                // userName={data.user.nickName}
+              />
             ))}
-          </ul> */}
+          </div>
         </div>
       </div>
     </div>
