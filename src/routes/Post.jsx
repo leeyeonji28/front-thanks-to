@@ -6,6 +6,7 @@ import { CgSpinner } from "react-icons/cg";
 import axios from "axios";
 import { url } from "../utile/url";
 import PostBox from "../components/PostContent/PostBox";
+import Masonry from "react-masonry-css";
 
 const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,23 +56,31 @@ const Post = () => {
       </div>
     );
   }
+  const columnsObs = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
   return (
     <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
       <Header />
-      <div className="flex ">
+      <div className="flex">
         <SideNav />
-        <div className="w-[1170px] h-[855px] rounded-lg text-center overflow-scroll">
-          <div className="grid grid-cols-3">
-            {getPostData.map((data, index) => (
-              <PostBox
-                key={index}
-                postImg={data.postImg}
-                postTitle={data.postTitle}
-                postContent={data.postContent}
-                postDate={data.postDate}
-                // userName={data.user.nickName}
-              />
-            ))}
+        <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+          <div>
+            <Masonry breakpointCols={3} className="flex gap-5">
+              {getPostData.map((data, index) => (
+                <PostBox
+                  key={index}
+                  postImg={data.postImg}
+                  postTitle={data.postTitle}
+                  postContent={data.postContent}
+                  postDate={data.postDate}
+                  // userName={data.user.nickName}
+                />
+              ))}
+            </Masonry>
           </div>
         </div>
       </div>
