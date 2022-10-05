@@ -33,7 +33,9 @@ const SideNav = () => {
           </span>
         </li>
         <li className="group relative w-12 h-12 rounded-lg text-gray-300 p-3 mb-6 hover:text-rose-500 cursor-pointer">
-          <FaHeart className="w-6 h-6" />
+          <Link to={`/hot_post`}>
+            <FaHeart className="w-6 h-6" />
+          </Link>
           <span className="absolute hidden top-0 left-12 p-2 bg-white shadow-lg text-gray-800 group-hover:block z-10">
             Hot_Post
           </span>

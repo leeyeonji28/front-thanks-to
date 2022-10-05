@@ -1,11 +1,14 @@
 import React from "react";
 import HeaderSerach from "./HeaderSerach";
 import { FaBell, FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="flex justify-between mb-5">
-      <h1 className="text-4xl font-bold text-white">Thanks to</h1>
+      <Link to={`/home`}>
+        <h1 className="text-4xl font-bold text-white">Thanks to</h1>
+      </Link>
       <ul className="flex">
         <li className="mr-6">
           <HeaderSerach />

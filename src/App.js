@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./routes/Main";
-import Header from "./components/Header/Header";
-import SideNav from "./components/SideNav";
 import Info from "./routes/Info";
 import Login from "./routes/Login";
 import Join from "./routes/Join";
@@ -10,6 +8,7 @@ import { loginState } from "./recoil/loginState";
 import AuthRoute from "./components/AuthRoute";
 import { useState } from "react";
 import Post from "./routes/Post";
+import HotPost from "./routes/HotPost";
 // import { RecoilRoot, useRecoilState } from "recoil";
 // import { userState } from "./recoil/user";
 
@@ -28,6 +27,7 @@ function App() {
           <Route path="/home" element={<Main />}></Route>
           <Route path="/info" element={<Info />}></Route>
           <Route path="/post" element={<Post />}></Route>
+          <Route path="/hot_post" element={<HotPost />}></Route>
         </Routes>
       </Router>
     </div>
