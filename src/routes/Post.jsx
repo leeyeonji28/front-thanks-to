@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Header from "../components/Header/Header";
-import SideNav from "../components/SideNav";
 import { CgSpinner } from "react-icons/cg";
 import axios from "axios";
 import { url } from "../utile/url";
 import PostBox from "../components/PostContent/PostBox";
 import Masonry from "react-masonry-css";
 import { HiChevronDoubleDown } from "react-icons/hi";
+import Layout from "../components/Layout/Layout";
 
 const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +37,7 @@ const Post = () => {
     getPostList();
   }, []);
 
-  console.log(getPostData);
+  console.log(getPostData[19]);
 
   if (error) {
     return (
@@ -59,35 +58,32 @@ const Post = () => {
   }
 
   return (
-    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
-      <Header />
-      <div className="flex">
-        <SideNav />
-        <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
-          <div>
-            <Masonry breakpointCols={3} className="flex gap-5">
-              {getPostData.map((data, index) => (
-                <PostBox
-                  key={index}
-                  postImg={data.postImg}
-                  postTitle={data.postTitle}
-                  postContent={data.postContent}
-                  postDate={data.postDate}
-                  // userName={data.user.nickName}
-                />
-              ))}
-            </Masonry>
-          </div>
+    <Layout>
+      <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+        <div>
+          <Masonry breakpointCols={3} className="flex gap-5">
+            {getPostData.map((data, index) => (
+              <PostBox
+                key={index}
+                postImg={data.postImg}
+                postTitle={data.postTitle}
+                postContent={data.postContent}
+                postDate={data.postDate}
+                postLike={data.postLike}
+                user={data.user}
+              />
+            ))}
+          </Masonry>
         </div>
-        {getPostData.length > 3 ? (
-          <div className="absolute top-[860px] left-[655px] animate-bounce">
-            <HiChevronDoubleDown className="text-3xl text-gray-300" />
-          </div>
-        ) : (
-          ""
-        )}
       </div>
-    </div>
+      {getPostData.length > 3 ? (
+        <div className="absolute top-[860px] left-[655px] animate-bounce">
+          <HiChevronDoubleDown className="text-3xl text-gray-300" />
+        </div>
+      ) : (
+        ""
+      )}
+    </Layout>
   );
 };
 

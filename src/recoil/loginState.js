@@ -2,5 +2,5 @@ import { atom } from "recoil";
 
 export const loginState = atom({
   key: "loginState",
-  default: null,
+  default: localStorage.getItem("Token"),
 });

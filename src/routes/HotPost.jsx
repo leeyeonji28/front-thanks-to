@@ -2,10 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { url } from "../utile/url";
 import { CgSpinner } from "react-icons/cg";
-import Header from "../components/Header/Header";
-import SideNav from "../components/SideNav";
 import HotPostBox from "../components/PostContent/HotPostBox";
 import { HiChevronDoubleDown } from "react-icons/hi";
+import Layout from "../components/Layout/Layout";
 
 const HotPost = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,33 +52,29 @@ const HotPost = () => {
   }
 
   return (
-    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
-      <Header />
-      <div className="flex">
-        <SideNav />
-        <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
-          <div>
-            {getPostData.map((data, index) => (
-              <HotPostBox
-                key={index}
-                postImg={data.postImg}
-                postTitle={data.postTitle}
-                postContent={data.postContent}
-                postDate={data.postDate}
-                // userName={data.user.nickName}
-              />
-            ))}
-          </div>
+    <Layout>
+      <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+        <div>
+          {getPostData.map((data, index) => (
+            <HotPostBox
+              key={index}
+              postImg={data.postImg}
+              postTitle={data.postTitle}
+              postContent={data.postContent}
+              postDate={data.postDate}
+              // userName={data.user.nickName}
+            />
+          ))}
         </div>
-        {getPostData.length > 3 ? (
-          <div className="absolute top-[860px] left-[655px] animate-bounce">
-            <HiChevronDoubleDown className="text-3xl text-gray-300" />
-          </div>
-        ) : (
-          ""
-        )}
       </div>
-    </div>
+      {getPostData.length > 3 ? (
+        <div className="absolute top-[860px] left-[655px] animate-bounce">
+          <HiChevronDoubleDown className="text-3xl text-gray-300" />
+        </div>
+      ) : (
+        ""
+      )}
+    </Layout>
   );
 };
 

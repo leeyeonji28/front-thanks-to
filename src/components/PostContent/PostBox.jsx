@@ -1,6 +1,15 @@
 import React from "react";
+import { IoHeartSharp } from "react-icons/io5";
 
-const PostBox = ({ postImg, postTitle, postContent, postDate, userName }) => {
+const PostBox = ({
+  postImg,
+  postTitle,
+  postContent,
+  postDate,
+  postLike,
+  user,
+}) => {
+  console.log({ user });
   return (
     <div className="w-full rounded-lg bg-white mb-6">
       {postImg != "" ? (
@@ -19,7 +28,20 @@ const PostBox = ({ postImg, postTitle, postContent, postDate, userName }) => {
         </p>
         <p className="mt-3 text-gray-400">{postDate}</p>
       </div>
-      <div className="p-3 border-t">user 정보</div>
+      <div className="p-3 border-t">
+        {user != null ? (
+          <div className="flex justify-between items-center">
+            <img src="" alt="" />
+            <b>{user.nickName}</b>
+            <div className="text-gray-500">
+              <IoHeartSharp className="inline-block mr-2 text-xl" />
+              <span>{postLike}</span>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };

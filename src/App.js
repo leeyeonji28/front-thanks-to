@@ -6,15 +6,14 @@ import Join from "./routes/Join";
 import { useRecoilState } from "recoil";
 import { loginState } from "./recoil/loginState";
 import AuthRoute from "./components/AuthRoute";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Post from "./routes/Post";
 import HotPost from "./routes/HotPost";
 // import { RecoilRoot, useRecoilState } from "recoil";
 // import { userState } from "./recoil/user";
 
 function App() {
-  const [access, setAccess] = useRecoilState(loginState);
-  setAccess(localStorage.getItem("Token"));
+  const access = useRecoilState(loginState);
   // const [loginOn, setloginOn] = useRecoilState(loginState);
   // const [user, setUser] = useRecoilState(userState);
 
