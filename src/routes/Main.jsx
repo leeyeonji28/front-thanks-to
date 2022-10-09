@@ -54,7 +54,7 @@ const Main = () => {
           </div>
           <div className=" bg-white rounded-lg p-7 overflow-y-scroll scrollbar-hide">
             <MainList />
-            <div className="absolute top-[860px] left-[530px] animate-bounce">
+            <div className="absolute top-[860px] left-[500px] animate-bounce">
               <HiChevronDoubleDown className="text-3xl text-gray-300" />
             </div>
           </div>

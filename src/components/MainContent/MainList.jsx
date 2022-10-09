@@ -1,6 +1,10 @@
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
+import { url } from "../../utile/url";
+import UserPostBox from "./UserPostBox";
 
 const MainList = () => {
   // 데모 데이터
@@ -50,18 +54,43 @@ const MainList = () => {
     },
   ];
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [getUserPostData, setGetUserPostData] = useState([]);
 
+  const getUserPostList = async () => {
+    try {
+      const json = await axios({
+        url: `${url}/api/post/list/all`,
+        method: "GET",
+      });
+      setGetUserPostData(json.data);
+      setIsLoading(false);
+    } catch (e) {
+      setError(e);
+    }
+  };
+
+  useEffect(() => {
+    getUserPostList();
+  }, []);
+
+  console.log(getUserPostData);
   if (error) {
-    return <span>{error.message}</span>;
+    return (
+      <div className="flex justify-center items-center w-full h-full">
+        <p className="text-rose-500 text-2xl">{error.message}</p>
+      </div>
+    );
   }
   if (isLoading) {
     return (
-      <span>
-        <CgSpinner />
-        Loading...
-      </span>
+      <div className="flex justify-center items-center w-full h-full">
+        <p className="text-rose-500 text-2xl">
+          <CgSpinner className="m-auto mb-2 animate-spin text-3xl" />
+          Loading
+        </p>
+      </div>
     );
   }
 
@@ -75,27 +104,13 @@ const MainList = () => {
         </h3>
         <div>
           <ul>
-            {listData.map((list, i) => (
-              <li key={i} className="group flex flex-wrap">
-                <b className="w-[104px] h-11 mr-5 text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
-                  {list.diaryDate}
-                </b>
-
-                <div>
-                  <span className="block w-[650px] my-5 border-b border-dashed"></span>
-                  {list.diaryInner.map((inner, j) => (
-                    <div
-                      key={j}
-                      className="w-[650px] mb-5 p-5 rounded-lg bg-gray-50"
-                    >
-                      <h5 className="mb-2 text-lg font-semibold">
-                        {inner.diaryTitle}
-                      </h5>
-                      <p>{inner.diaryContent}</p>
-                    </div>
-                  ))}
-                </div>
-              </li>
+            {getUserPostData.map((list, i) => (
+              <UserPostBox
+                key={i}
+                postTitle={list.postTitle}
+                postContent={list.postContent}
+                postData={list.postDate}
+              />
             ))}
           </ul>
         </div>
