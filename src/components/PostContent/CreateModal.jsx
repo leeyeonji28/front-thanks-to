@@ -36,7 +36,14 @@ const CreateModal = ({ userImg, userName, showModal }) => {
 
   const postCreate = async () => {
     const formData = new FormData();
-    formData.append("postImage", files.length && files[0].uploadedFile);
+    if (files.length != 0) {
+      formData.append("postImage", files.length && files[0].uploadedFile);
+    } else {
+      const fileNull = new Blob([JSON.stringify("")], {
+        type: "application/json",
+      });
+      formData.append("postImage", fileNull);
+    }
 
     const value = {
       postImg: "",
@@ -61,6 +68,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
     });
 
     alert("포스팅이 완료되었습니다.");
+    console.log(formData);
     showModal();
   };
 
