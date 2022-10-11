@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { HiLockOpen, HiLockClosed } from "react-icons/hi";
 import { url } from "../../utile/url";
+import { useRecoilValue } from "recoil";
+import { loginState } from "../../recoil/loginState";
 
 const CreateModal = ({ userImg, userName, showModal }) => {
   const [imageSrc, setImageSrc] = useState();
   const [postLock, setPostLock] = useState(false);
   const [files, setFiles] = useState([]);
-  const [userId, setUserId] = useState();
+  const userId = useRecoilValue(loginState);
 
   const [postValue, setPostValue] = useState({
     postImg: "",
@@ -19,7 +21,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
 
   // userId
   useEffect(() => {
-    setUserId(localStorage.getItem("id"));
+    // setUserId(localStorage.getItem("id"));
   }, []);
 
   const postCheck = () => {
