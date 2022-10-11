@@ -8,10 +8,12 @@ import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
 
 const CreateModal = ({ userImg, userName, showModal }) => {
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState("");
   const [postLock, setPostLock] = useState(false);
   const [files, setFiles] = useState([]);
   const userId = useRecoilValue(loginState);
+
+  console.log(files.length);
 
   const [postValue, setPostValue] = useState({
     postImg: "",

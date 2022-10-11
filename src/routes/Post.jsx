@@ -62,17 +62,20 @@ const Post = () => {
       <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
         <div>
           <Masonry breakpointCols={3} className="flex gap-5">
-            {getPostData.map((data, index) => (
-              <PostBox
-                key={index}
-                postImg={data.postImg}
-                postTitle={data.postTitle}
-                postContent={data.postContent}
-                postDate={data.postDate}
-                postLike={data.postLike}
-                user={data.user}
-              />
-            ))}
+            {getPostData
+              .slice(0)
+              .reverse()
+              .map((data, index) => (
+                <PostBox
+                  key={index}
+                  postImg={data.postImg}
+                  postTitle={data.postTitle}
+                  postContent={data.postContent}
+                  postDate={data.postDate}
+                  postLike={data.postLike}
+                  user={data.user}
+                />
+              ))}
           </Masonry>
         </div>
       </div>

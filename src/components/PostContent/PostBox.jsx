@@ -9,7 +9,6 @@ const PostBox = ({
   postLike,
   user,
 }) => {
-  console.log({ user });
   return (
     <div className="w-full rounded-lg bg-white mb-6">
       {postImg != "" ? (

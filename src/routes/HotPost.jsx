@@ -11,6 +11,7 @@ const HotPost = () => {
   const [error, setError] = useState("");
   const [userId, setUserId] = useState();
   const [getPostData, setGetPostData] = useState([]);
+  const [listLenght, setListLenght] = useState();
 
   const getPostList = async () => {
     try {
@@ -21,6 +22,7 @@ const HotPost = () => {
 
       setGetPostData(json.data);
       setIsLoading(false);
+      setListLenght(json.data.length);
     } catch (e) {
       setError(e);
     }
@@ -55,16 +57,19 @@ const HotPost = () => {
     <Layout>
       <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
         <div>
-          {getPostData.map((data, index) => (
-            <HotPostBox
-              key={index}
-              postImg={data.postImg}
-              postTitle={data.postTitle}
-              postContent={data.postContent}
-              postDate={data.postDate}
-              // userName={data.user.nickName}
-            />
-          ))}
+          {getPostData
+            .slice(listLenght - 30, listLenght)
+            .reverse()
+            .map((data, index) => (
+              <HotPostBox
+                key={index}
+                postImg={data.postImg}
+                postTitle={data.postTitle}
+                postContent={data.postContent}
+                postDate={data.postDate}
+                // userName={data.user.nickName}
+              />
+            ))}
         </div>
       </div>
       {getPostData.length > 3 ? (

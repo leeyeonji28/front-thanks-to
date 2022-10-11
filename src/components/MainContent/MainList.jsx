@@ -13,6 +13,7 @@ const MainList = () => {
   const [error, setError] = useState("");
   const [getUserPostData, setGetUserPostData] = useState([]);
   const userId = useRecoilValue(loginState);
+  const [listLenght, setListLenght] = useState();
 
   const getUserPostList = async () => {
     try {
@@ -22,6 +23,7 @@ const MainList = () => {
       });
       setGetUserPostData(json.data.postList);
       setIsLoading(false);
+      setListLenght(json.data.postList.length);
     } catch (e) {
       setError(e);
     }
@@ -32,7 +34,6 @@ const MainList = () => {
     getUserPostList();
   }, []);
 
-  console.log(getUserPostData);
   if (error) {
     return (
       <div className="flex justify-center items-center w-full h-full">
@@ -61,14 +62,17 @@ const MainList = () => {
         </h3>
         <div>
           <ul>
-            {getUserPostData.map((list, i) => (
-              <UserPostBox
-                key={i}
-                postTitle={list.postTitle}
-                postContent={list.postContent}
-                postData={list.postDate}
-              />
-            ))}
+            {getUserPostData
+              .slice(listLenght - 30, listLenght)
+              .reverse()
+              .map((list, i) => (
+                <UserPostBox
+                  key={i}
+                  postTitle={list.postTitle}
+                  postContent={list.postContent}
+                  postData={list.postDate}
+                />
+              ))}
           </ul>
         </div>
       </div>
