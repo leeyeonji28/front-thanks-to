@@ -14,6 +14,8 @@ const MainList = () => {
   const [getUserPostData, setGetUserPostData] = useState([]);
   const userId = useRecoilValue(loginState);
   const [listLenght, setListLenght] = useState();
+  const [userNick, setUserNick] = useState();
+  const [userImg, setUserImg] = useState();
 
   const getUserPostList = async () => {
     try {
@@ -24,6 +26,8 @@ const MainList = () => {
       setGetUserPostData(json.data.postList);
       setIsLoading(false);
       setListLenght(json.data.postList.length);
+      setUserNick(json.data.nickName);
+      setUserImg(json.data.profileImg);
     } catch (e) {
       setError(e);
     }
@@ -33,6 +37,8 @@ const MainList = () => {
     // setUserId(localStorage.getItem("id"));
     getUserPostList();
   }, []);
+
+  console.log("getUserPostData : ", getUserPostData);
 
   if (error) {
     return (
@@ -61,19 +67,22 @@ const MainList = () => {
           그동안 감사했던 기록들을 함께 보아요 😊
         </h3>
         <div>
-          <ul>
-            {getUserPostData
-              .slice(listLenght - 30, listLenght)
-              .reverse()
-              .map((list, i) => (
-                <UserPostBox
-                  key={i}
-                  postTitle={list.postTitle}
-                  postContent={list.postContent}
-                  postData={list.postDate}
-                />
-              ))}
-          </ul>
+          {getUserPostData
+            .slice(listLenght - 30, listLenght)
+            .reverse()
+            .map((list, i) => (
+              <UserPostBox
+                key={i}
+                postId={list.id}
+                postTitle={list.postTitle}
+                postContent={list.postContent}
+                postImg={list.postImg}
+                postData={list.postDate}
+                postLike={list.postLike}
+                userNick={userNick}
+                userImg={userImg}
+              />
+            ))}
         </div>
       </div>
     </div>

@@ -13,9 +13,6 @@ const Header = () => {
         <li className="mr-6">
           <HeaderSerach />
         </li>
-        <li className="w-12 h-12 rounded-lg bg-white p-3 mr-6">
-          <FaBell className="w-6 h-6 text-rose-500" />
-        </li>
         <li className="w-12 h-12 rounded-lg bg-white p-3">
           <FaUser className="w-6 h-6 text-rose-500" />
         </li>
