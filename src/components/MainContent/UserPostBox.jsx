@@ -10,6 +10,7 @@ const UserPostBox = ({
   postLike,
   userNick,
   userImg,
+  getUserPostList,
 }) => {
   const [modal, setModal] = useState(false);
 
@@ -39,6 +40,7 @@ const UserPostBox = ({
 
       {modal === true ? (
         <PostDetail
+          postId={postId}
           postTitle={postTitle}
           postContent={postContent}
           postData={postData}
@@ -47,6 +49,7 @@ const UserPostBox = ({
           userNick={userNick}
           userImg={userImg}
           showModal={showModal}
+          getUserPostList={getUserPostList}
         />
       ) : null}
     </div>

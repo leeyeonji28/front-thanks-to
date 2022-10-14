@@ -1,11 +1,15 @@
+import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { url } from "../../utile/url";
 
 const PostDetail = ({
+  postId,
   postTitle,
   postContent,
   postData,
@@ -14,9 +18,11 @@ const PostDetail = ({
   showModal,
   userNick,
   userImg,
+  getUserPostList,
 }) => {
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
+  const navigate = useNavigate();
 
   const boxHeight = () => {
     setDivHeight(ref.current.scrollHeight);
@@ -48,10 +54,27 @@ const PostDetail = ({
               className="mt-3 p-2 shadow-[0px_0px_30px_-15px_rgba(0,0,0,0.3)] menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="p-4 text-base">수정하기</a>
+                <p className="p-4 text-base">수정하기</p>
               </li>
               <li>
-                <a className="p-4 text-base text-red-400">삭제하기</a>
+                <p
+                  onClick={async () => {
+                    try {
+                      const json = await axios({
+                        url: `${url}/api/post/delete/${postId}`,
+                        method: "DELETE",
+                      });
+                      alert("게시글이 삭제되었습니다.");
+                      showModal();
+                      getUserPostList();
+                    } catch (e) {
+                      alert("삭제할 수 없습니다.");
+                    }
+                  }}
+                  className="p-4 text-base text-red-400"
+                >
+                  삭제하기
+                </p>
               </li>
             </ul>
           </div>

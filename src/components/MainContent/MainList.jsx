@@ -81,6 +81,7 @@ const MainList = () => {
                 postLike={list.postLike}
                 userNick={userNick}
                 userImg={userImg}
+                getUserPostList={getUserPostList}
               />
             ))}
         </div>
