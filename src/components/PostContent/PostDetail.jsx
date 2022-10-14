@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
+import { FiMoreHorizontal } from "react-icons/fi";
 
 const PostDetail = ({
   postTitle,
@@ -17,36 +18,52 @@ const PostDetail = ({
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
 
+  const boxHeight = () => {
+    setDivHeight(ref.current.scrollHeight);
+  };
+
   useEffect(() => {
-    setDivHeight(ref.current.offsetHeight);
-
-    console.log("divHeight : ", ref.current.offsetHeight);
-    // console.log("ref.current.offsetHeight : ", ref.current.offsetHeight);
+    boxHeight();
   }, [ref]);
-
-  console.log("divHeight : ", divHeight);
 
   return (
     <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20">
       {/* 모달 이너 */}
-      <div className="modal-box relative max-w-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden">
-        <div
-          onClick={() => {
-            showModal();
-          }}
-          className="btn btn-sm btn-ghost absolute left-2 top-2 text-2xl"
-        >
-          ✕
+      <div className="modal-box relative max-w-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden p-10 pt-14">
+        <div className="w-full flex justify-between items-center absolute left-0 top-2 px-2">
+          <div
+            onClick={() => {
+              showModal();
+            }}
+            className="btn btn btn-circle btn-ghost text-2xl"
+          >
+            ✕
+          </div>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <FiMoreHorizontal className="text-3xl" />
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow-[0px_0px_30px_-15px_rgba(0,0,0,0.3)] menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="p-4 text-base">수정하기</a>
+              </li>
+              <li>
+                <a className="p-4 text-base text-red-400">삭제하기</a>
+              </li>
+            </ul>
+          </div>
         </div>
         {/* 포스트 내용 */}
         <div
           ref={ref}
           className={
-            divHeight > 500
-              ? "max-w-3xl p-10 overflow-y-scroll"
-              : "max-w-3xl p-10 overflow-hidden scrollbar-hide"
+            divHeight >= 500
+              ? "max-w-3xl h-[600px] p-4 overflow-y-scroll"
+              : "max-w-3xl p-4"
           }
-          //className="max-w-3xl h-[700px] p-10 max-w-3xl p-10 overflow-y-scroll scrollbar-hide"
         >
           <div className="flex justify-between items-center mb-8 pb-8 border-b">
             <div>
@@ -56,13 +73,20 @@ const PostDetail = ({
               <b className="block">{userNick}</b>
               <span className="text-gray-500">{postData}</span>
             </div>
-            <div className="text-center">
+            <div className="flex items-center text-xl">
               <FaHeart />
-              <span className="mt-2">{postLike}</span>
+              <span className="ml-2 text-lg">{postLike}</span>
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl">
-            <img src={postImg} alt="" className="w-full " />
+            <img
+              src={postImg}
+              alt=""
+              className="w-full"
+              onLoad={() => {
+                boxHeight();
+              }}
+            />
           </div>
           <h3 className="mb-4 text-2xl mt-8">{postTitle}</h3>
           <p>{postContent}</p>
