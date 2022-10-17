@@ -10,7 +10,7 @@ const HotPostBox = ({
   return (
     <div className="flex w-full h-[270px] rounded-lg bg-white mb-5">
       {postImg != "" ? (
-        <div className="flex justify-center items-center rounded-l-lg overflow-hidden">
+        <div className="flex justify-center items-center w-[800px] overflow-hidden">
           <img src={postImg} alt="" />
         </div>
       ) : (
