@@ -111,6 +111,7 @@ const PostDetail = ({
               }}
             />
           </div>
+
           <h3 className="mb-4 text-2xl mt-8">{postTitle}</h3>
           <p>{postContent}</p>
         </div>
