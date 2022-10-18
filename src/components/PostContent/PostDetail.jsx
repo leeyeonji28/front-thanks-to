@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
 import { url } from "../../utile/url";
 
 const PostDetail = ({
@@ -22,7 +21,6 @@ const PostDetail = ({
 }) => {
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
-  const navigate = useNavigate();
 
   const boxHeight = () => {
     setDivHeight(ref.current.scrollHeight);
