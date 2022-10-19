@@ -28,7 +28,6 @@ const MainProfile = () => {
     }
   };
 
-  console.log(userInfo);
   function showModal() {
     setModal(!modal);
   }

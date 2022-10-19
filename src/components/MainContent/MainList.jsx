@@ -34,11 +34,8 @@ const MainList = () => {
   };
 
   useEffect(() => {
-    // setUserId(localStorage.getItem("id"));
     getUserPostList();
   }, []);
-
-  console.log("getUserPostData : ", getUserPostData);
 
   if (error) {
     return (
