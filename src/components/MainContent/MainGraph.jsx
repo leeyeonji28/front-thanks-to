@@ -9,11 +9,12 @@ import { url } from "../../utile/url";
 const MainGraph = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState([]);
   const [countData, setCountData] = useState([]);
   const userId = useRecoilValue(loginState);
 
   const getUserInfo = async () => {
+    console.log(123);
     try {
       const json = await axios({
         url: `${url}/api/user/${userId}`,
@@ -21,15 +22,13 @@ const MainGraph = () => {
       });
       setUserInfo(json.data.postList);
       setIsLoading(false);
-      if (typeof userInfo == "object") {
-        counter();
-      }
+      counter(json.data.postList);
     } catch (e) {
       setError(e);
     }
   };
 
-  const counter = () => {
+  const counter = (userInfo) => {
     let graphData = [];
     let now = new Date();
     for (let i = 1; i <= 12; i++) {
@@ -44,7 +43,6 @@ const MainGraph = () => {
     console.log("graphData : ", graphData);
     setCountData(graphData);
   };
-  console.log("countData : ", countData);
 
   useEffect(() => {
     getUserInfo();
@@ -94,7 +92,7 @@ const MainGraph = () => {
     <div className="app">
       <h3>
         <b className="text-xl">DingDong</b>
-        님의 감사지수를 그래프로 확인해 보세요 😊 {userInfo.length}
+        님! 한 해의 감사지수를 그래프로 확인해 보세요 😊
       </h3>
       <div className="row">
         <div className="mixed-chart">
