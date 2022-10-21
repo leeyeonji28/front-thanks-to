@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
@@ -10,6 +10,7 @@ const MainGraph = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [userInfo, setUserInfo] = useState("");
+  const [countData, setCountData] = useState([]);
   const userId = useRecoilValue(loginState);
 
   const getUserInfo = async () => {
@@ -20,27 +21,30 @@ const MainGraph = () => {
       });
       setUserInfo(json.data.postList);
       setIsLoading(false);
-      counter();
+      if (typeof userInfo == "object") {
+        counter();
+      }
     } catch (e) {
       setError(e);
     }
   };
 
   const counter = () => {
-    let countData = [];
+    let graphData = [];
+    let now = new Date();
     for (let i = 1; i <= 12; i++) {
       let count = 0;
-      const result = userInfo
-        .filter((data) => data.postDate.includes(`2022-${i}-`))
+      userInfo
+        .filter((data) => data.postDate.includes(`${now.getFullYear()}-${i}-`))
         .map((data) => {
-          count += 1;
+          return (count += 1);
         });
-      countData[i - 1] = count;
+      graphData[i - 1] = count;
     }
-
-    //    console.log("count : " + count);
-    console.log(countData);
+    console.log("graphData : ", graphData);
+    setCountData(graphData);
   };
+  console.log("countData : ", countData);
 
   useEffect(() => {
     getUserInfo();
@@ -62,7 +66,7 @@ const MainGraph = () => {
     series: [
       {
         name: "series-1",
-        data: [20, 10, 15, 28, 16, 23, 17, 28, 8, 0, 0, 0],
+        data: countData,
         color: "#f43f5e",
       },
     ],
