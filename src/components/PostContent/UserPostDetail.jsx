@@ -7,7 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { url } from "../../utile/url";
 
-const PostDetail = ({
+const UserPostDetail = ({
   postId,
   postTitle,
   postContent,
@@ -15,7 +15,9 @@ const PostDetail = ({
   postImg,
   postLike,
   showModal,
-  user,
+  userNick,
+  userImg,
+  getUserPostList,
 }) => {
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
@@ -28,7 +30,6 @@ const PostDetail = ({
     boxHeight();
   }, [ref]);
 
-  console.log(user);
   return (
     <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20">
       {/* 모달 이너 */}
@@ -63,6 +64,7 @@ const PostDetail = ({
                       });
                       alert("게시글이 삭제되었습니다.");
                       showModal();
+                      getUserPostList();
                     } catch (e) {
                       alert("삭제할 수 없습니다.");
                     }
@@ -87,9 +89,9 @@ const PostDetail = ({
           <div className="flex justify-between items-center mb-8 pb-8 border-b">
             <div>
               <div className="mr-4">
-                <img src={user.userImg} alt="" />
+                <img src={userImg} alt="" />
               </div>
-              <b className="block">{user.userNick}</b>
+              <b className="block">{userNick}</b>
               <span className="text-gray-500">{postDate}</span>
             </div>
             <div className="flex items-center text-xl">
@@ -116,4 +118,4 @@ const PostDetail = ({
   );
 };
 
-export default PostDetail;
+export default UserPostDetail;

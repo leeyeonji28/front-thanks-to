@@ -74,7 +74,7 @@ const MainList = () => {
                 postTitle={list.postTitle}
                 postContent={list.postContent}
                 postImg={list.postImg}
-                postData={list.postDate}
+                postDate={list.postDate}
                 postLike={list.postLike}
                 userNick={userNick}
                 userImg={userImg}

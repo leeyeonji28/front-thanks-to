@@ -14,7 +14,6 @@ const MainGraph = () => {
   const userId = useRecoilValue(loginState);
 
   const getUserInfo = async () => {
-    console.log(123);
     try {
       const json = await axios({
         url: `${url}/api/user/${userId}`,
@@ -40,7 +39,6 @@ const MainGraph = () => {
         });
       graphData[i - 1] = count;
     }
-    console.log("graphData : ", graphData);
     setCountData(graphData);
   };
 

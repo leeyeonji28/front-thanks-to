@@ -37,8 +37,6 @@ const Post = () => {
     getPostList();
   }, []);
 
-  console.log(getPostData[19]);
-
   if (error) {
     return (
       <div className="flex justify-center items-center w-full h-full">
@@ -66,15 +64,7 @@ const Post = () => {
               .slice(0)
               .reverse()
               .map((data, index) => (
-                <PostBox
-                  key={index}
-                  postImg={data.postImg}
-                  postTitle={data.postTitle}
-                  postContent={data.postContent}
-                  postDate={data.postDate}
-                  postLike={data.postLike}
-                  user={data.user}
-                />
+                <PostBox key={index} postId={data.id} />
               ))}
           </Masonry>
         </div>

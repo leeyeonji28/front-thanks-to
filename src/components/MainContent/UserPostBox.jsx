@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import PostDetail from "../PostContent/PostDetail";
+import UserPostDetail from "../PostContent/UserPostDetail";
 
 const UserPostBox = ({
   postId,
   postTitle,
   postContent,
-  postData,
+  postDate,
   postImg,
   postLike,
   userNick,
@@ -22,7 +22,7 @@ const UserPostBox = ({
     <div className="group">
       <div className="flex flex-wrap">
         <b className="w-[104px] h-11 mr-5 text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
-          {postData}
+          {postDate}
         </b>
         <div
           className="cursor-pointer"
@@ -39,11 +39,11 @@ const UserPostBox = ({
       </div>
 
       {modal === true ? (
-        <PostDetail
+        <UserPostDetail
           postId={postId}
           postTitle={postTitle}
           postContent={postContent}
-          postData={postData}
+          postDate={postDate}
           postImg={postImg}
           postLike={postLike}
           userNick={userNick}
