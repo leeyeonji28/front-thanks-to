@@ -9,7 +9,6 @@ import Layout from "../components/Layout/Layout";
 const HotPost = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [userId, setUserId] = useState();
   const [getPostData, setGetPostData] = useState([]);
   const [listLenght, setListLenght] = useState();
 
@@ -29,7 +28,6 @@ const HotPost = () => {
   };
 
   useEffect(() => {
-    setUserId(localStorage.getItem("id"));
     getPostList();
   }, []);
 
@@ -61,14 +59,7 @@ const HotPost = () => {
             .slice(listLenght - 30, listLenght)
             .reverse()
             .map((data, index) => (
-              <HotPostBox
-                key={index}
-                postImg={data.postImg}
-                postTitle={data.postTitle}
-                postContent={data.postContent}
-                postDate={data.postDate}
-                // userName={data.user.nickName}
-              />
+              <HotPostBox key={index} postId={data.id} />
             ))}
         </div>
       </div>
