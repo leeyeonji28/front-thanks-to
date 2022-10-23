@@ -80,7 +80,6 @@ const PostBox = ({ postId }) => {
         </div>
         <div className="p-3 border-t">
           <div className="flex justify-between items-center">
-            <img src="" alt="" />
             <b>{userNick}</b>
             <div className="text-gray-500">
               <IoHeartSharp className="inline-block mr-2 text-xl" />
@@ -92,14 +91,15 @@ const PostBox = ({ postId }) => {
 
       {modal === true ? (
         <PostDetail
-          // postId={postId}
-          // postTitle={postTitle}
-          // postContent={postContent}
-          // postDate={postDate}
-          // postImg={postImg}
-          // postLike={postLike}
+          postId={postId}
+          postTitle={postData.postTitle}
+          postContent={postData.postContent}
+          postDate={postData.postDate}
+          postImg={postData.postImg}
+          postLike={postData.postLike}
           showModal={showModal}
-          // user={user}
+          userNick={userNick}
+          userImg={userImg}
         />
       ) : null}
     </div>

@@ -15,7 +15,8 @@ const PostDetail = ({
   postImg,
   postLike,
   showModal,
-  user,
+  userNick,
+  userImg,
 }) => {
   const [divHeight, setDivHeight] = useState(0);
   const ref = useRef(null);
@@ -87,9 +88,9 @@ const PostDetail = ({
           <div className="flex justify-between items-center mb-8 pb-8 border-b">
             <div>
               <div className="mr-4">
-                <img src={user.userImg} alt="" />
+                <img src={userImg} alt="" />
               </div>
-              <b className="block">{user.userNick}</b>
+              <b className="block">{userNick}</b>
               <span className="text-gray-500">{postDate}</span>
             </div>
             <div className="flex items-center text-xl">
