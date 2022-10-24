@@ -17,6 +17,8 @@ const MainList = () => {
   const [userNick, setUserNick] = useState();
   const [userImg, setUserImg] = useState();
 
+  console.log(userId);
+
   const getUserPostList = async () => {
     try {
       const json = await axios({

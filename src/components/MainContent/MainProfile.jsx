@@ -36,10 +36,12 @@ const MainProfile = () => {
     getUserInfo();
   }, []);
 
+  console.log(userInfo);
+
   // 임시 데이터
-  const userData = {
-    userImg: proimg,
-  };
+  // const userData = {
+  //   userImg: proimg,
+  // };
 
   if (error) {
     return (
@@ -62,11 +64,9 @@ const MainProfile = () => {
   return (
     <div className="flex justify-center items-center h-[240px]">
       <div className="text-center">
-        <img
-          src={userData.userImg}
-          alt=""
-          className="w-16 m-auto border shadow-lg rounded-lg"
-        />
+        <div className="w-16 m-auto border shadow-lg rounded-lg overflow-hidden">
+          <img src={userInfo.profileImg} alt="" className="h-16" />
+        </div>
         <b className="block text-xl mt-5">{userInfo.nickName}</b>
         <p>{userInfo.userSay}</p>
         <div
@@ -79,7 +79,7 @@ const MainProfile = () => {
         </div>
         {modal === true ? (
           <CreateModal
-            userImg={userData.userImg}
+            userImg={userInfo.profileImg}
             userName={userInfo.nickName}
             showModal={showModal}
           />

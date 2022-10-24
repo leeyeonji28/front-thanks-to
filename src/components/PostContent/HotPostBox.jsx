@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
+import { IoHeartSharp } from "react-icons/io5";
 import { url } from "../../utile/url";
 import HotDetail from "../PostContent/HotDetail";
 
@@ -78,7 +79,15 @@ const HotPostBox = ({ postId }) => {
             </p>
             <p className="mt-3 text-gray-400">{hotData.postDate}</p>
           </div>
-          <div className="p-3 border-t">user 정보</div>
+          <div className="p-3 border-t">
+            <div className="flex justify-between items-center">
+              <b>{userNick}</b>
+              <div className="text-gray-500">
+                <IoHeartSharp className="inline-block mr-2 text-xl" />
+                <span>{hotData.postLike}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

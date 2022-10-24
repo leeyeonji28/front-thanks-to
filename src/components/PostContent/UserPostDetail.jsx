@@ -87,12 +87,14 @@ const UserPostDetail = ({
           }
         >
           <div className="flex justify-between items-center mb-8 pb-8 border-b">
-            <div>
-              <div className="mr-4">
-                <img src={userImg} alt="" />
+            <div className="flex items-center">
+              <div className="w-16 mr-4 border shadow-lg rounded-lg overflow-hidden">
+                <img src={userImg} alt="" className="h-16" />
               </div>
-              <b className="block">{userNick}</b>
-              <span className="text-gray-500">{postDate}</span>
+              <div>
+                <b className="block text-xl">{userNick}</b>
+                <span className="text-gray-500">{postDate}</span>
+              </div>
             </div>
             <div className="flex items-center text-xl">
               <FaHeart />
