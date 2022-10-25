@@ -5,10 +5,11 @@ import Login from "./routes/Login";
 import Join from "./routes/Join";
 import { useRecoilState } from "recoil";
 import { loginState } from "./recoil/loginState";
-import AuthRoute from "./components/AuthRoute";
-import { useEffect, useState } from "react";
 import Post from "./routes/Post";
 import HotPost from "./routes/HotPost";
+import MyPage from "./routes/MyPage";
+import MyPageModify from "./routes/MyPageModify";
+
 // import { RecoilRoot, useRecoilState } from "recoil";
 // import { userState } from "./recoil/user";
 
@@ -27,6 +28,11 @@ function App() {
           <Route path="/info" element={<Info />}></Route>
           <Route path="/post" element={<Post />}></Route>
           <Route path="/hot_post" element={<HotPost />}></Route>
+          <Route path="/mypage/:userId" element={<MyPage />}></Route>
+          <Route
+            path="/mypage/:userId/modify"
+            element={<MyPageModify />}
+          ></Route>
         </Routes>
       </Router>
     </div>

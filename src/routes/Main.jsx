@@ -46,7 +46,6 @@ const Main = () => {
 
   return (
     <Layout>
-      <div className="rounded-lg "></div>
       <div className="grid grid-cols-[830px_320px] gap-5 w-[1170px] h-[855px] ">
         <div className="grid grid-rows-[310px_525px] gap-5">
           <div className="bg-white rounded-lg p-7">

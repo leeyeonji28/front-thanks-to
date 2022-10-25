@@ -5,7 +5,6 @@ import Layout from "../components/Layout/Layout";
 const Info = () => {
   return (
     <Layout>
-      <div className="rounded-lg "></div>
       <div className="w-[1170px] h-[855px] bg-white rounded-lg">
         <div className="p-7 text-center">
           <div className="flex justify-conter items-center h-[230px] overflow-hidden rounded-lg">

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
-import proimg from "../../assets/images/ding.png";
 import { loginState } from "../../recoil/loginState";
 import { url } from "../../utile/url";
 import CreateModal from "../PostContent/CreateModal";
@@ -35,13 +34,6 @@ const MainProfile = () => {
   useEffect(() => {
     getUserInfo();
   }, []);
-
-  console.log(userInfo);
-
-  // 임시 데이터
-  // const userData = {
-  //   userImg: proimg,
-  // };
 
   if (error) {
     return (
