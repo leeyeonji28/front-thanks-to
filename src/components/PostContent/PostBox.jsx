@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IoHeartSharp } from "react-icons/io5";
 import { CgSpinner } from "react-icons/cg";
 import { url } from "../../utile/url";
-import PostDetail from "./UserPostDetail";
+import PostDetail from "./PostDetail";
 
 const PostBox = ({ postId }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -62,7 +62,7 @@ const PostBox = ({ postId }) => {
           showModal();
         }}
       >
-        {postData.postImg != "" ? (
+        {postData.postImg !== "" ? (
           <div className="flex justify-center items-center h-72 rounded-t-lg overflow-hidden">
             <img src={postData.postImg} alt="" />
           </div>
@@ -100,6 +100,7 @@ const PostBox = ({ postId }) => {
           showModal={showModal}
           userNick={userNick}
           userImg={userImg}
+          getPostList={getPostList}
         />
       ) : null}
     </div>

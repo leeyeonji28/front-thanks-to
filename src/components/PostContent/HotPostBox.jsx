@@ -5,7 +5,7 @@ import { IoHeartSharp } from "react-icons/io5";
 import { url } from "../../utile/url";
 import HotDetail from "../PostContent/HotDetail";
 
-const HotPostBox = ({ postId }) => {
+const HotPostBox = ({ postId, getPostList }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [hotData, setHotData] = useState("");
@@ -62,7 +62,7 @@ const HotPostBox = ({ postId }) => {
           showModal();
         }}
       >
-        {hotData.postImg != "" ? (
+        {hotData.postImg !== "" ? (
           <div className="flex justify-center items-center w-[800px] overflow-hidden">
             <img src={hotData.postImg} alt="" />
           </div>
@@ -102,6 +102,7 @@ const HotPostBox = ({ postId }) => {
           showModal={showModal}
           userNick={userNick}
           userImg={userImg}
+          getHotPostList={getHotPostList}
         />
       ) : null}
     </div>

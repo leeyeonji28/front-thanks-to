@@ -57,7 +57,11 @@ const HotPost = () => {
             .slice(listLenght - 30, listLenght)
             .reverse()
             .map((data, index) => (
-              <HotPostBox key={index} postId={data.id} />
+              <HotPostBox
+                key={index}
+                postId={data.id}
+                getPostList={getPostList}
+              />
             ))}
         </div>
       </div>
