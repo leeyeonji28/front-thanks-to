@@ -9,6 +9,7 @@ const PostBox = ({ postId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [postData, setPostData] = useState("");
+  const [postUserId, setPostUserId] = useState();
   const [userNick, setUserNick] = useState();
   const [userImg, setUserImg] = useState();
   const [modal, setModal] = useState(false);
@@ -23,6 +24,7 @@ const PostBox = ({ postId }) => {
       setIsLoading(false);
       setUserNick(json.data.user.nickName);
       setUserImg(json.data.user.profileImg);
+      setPostUserId(json.data.user.id);
     } catch (e) {
       setError(e);
     }
@@ -98,6 +100,7 @@ const PostBox = ({ postId }) => {
           postImg={postData.postImg}
           postLike={postData.postLike}
           showModal={showModal}
+          postUserId={postUserId}
           userNick={userNick}
           userImg={userImg}
           getPostList={getPostList}

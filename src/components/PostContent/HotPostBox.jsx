@@ -5,10 +5,11 @@ import { IoHeartSharp } from "react-icons/io5";
 import { url } from "../../utile/url";
 import HotDetail from "../PostContent/HotDetail";
 
-const HotPostBox = ({ postId, getPostList }) => {
+const HotPostBox = ({ postId }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [hotData, setHotData] = useState("");
+  const [postUserId, setPostUserId] = useState();
   const [userNick, setUserNick] = useState();
   const [userImg, setUserImg] = useState();
   const [modal, setModal] = useState(false);
@@ -23,6 +24,7 @@ const HotPostBox = ({ postId, getPostList }) => {
       setIsLoading(false);
       setUserNick(json.data.user.nickName);
       setUserImg(json.data.user.profileImg);
+      setPostUserId(json.data.user.id);
     } catch (e) {
       setError(e);
     }
@@ -100,6 +102,7 @@ const HotPostBox = ({ postId, getPostList }) => {
           postImg={hotData.postImg}
           postLike={hotData.postLike}
           showModal={showModal}
+          postUserId={postUserId}
           userNick={userNick}
           userImg={userImg}
           getHotPostList={getHotPostList}

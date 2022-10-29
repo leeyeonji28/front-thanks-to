@@ -7,6 +7,8 @@ import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { url } from "../../utile/url";
 import { IoNotifications } from "react-icons/io5";
+import { useRecoilValue } from "recoil";
+import { loginState } from "../../recoil/loginState";
 
 const HotDetail = ({
   postId,
@@ -16,6 +18,7 @@ const HotDetail = ({
   postImg,
   postLike,
   showModal,
+  postUserId,
   userNick,
   userImg,
   getHotPostList,
@@ -25,11 +28,13 @@ const HotDetail = ({
   const [contentValue, setContentValue] = useState(postContent);
   const [modify, setModify] = useState(false);
   const ref = useRef(null);
+  const userId = useRecoilValue(loginState);
 
   const boxHeight = () => {
     setDivHeight(ref.current.scrollHeight);
   };
 
+  console.log(postUserId);
   useEffect(() => {
     boxHeight();
   }, [ref]);
@@ -47,44 +52,48 @@ const HotDetail = ({
           >
             ✕
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <FiMoreHorizontal className="text-3xl" />
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow-[0px_0px_30px_-15px_rgba(0,0,0,0.3)] menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li
-                onClick={() => {
-                  setModify(!modify);
-                }}
-                className=""
+          {userId == postUserId ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <FiMoreHorizontal className="text-3xl" />
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 p-2 shadow-[0px_0px_30px_-15px_rgba(0,0,0,0.3)] menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <p className="p-4 text-base active:bg-gray-400">수정하기</p>
-              </li>
-              <li>
-                <p
-                  onClick={async () => {
-                    try {
-                      await axios({
-                        url: `${url}/api/post/delete/${postId}`,
-                        method: "DELETE",
-                      });
-                      alert("게시글이 삭제되었습니다.");
-                      showModal();
-                      getHotPostList();
-                    } catch (e) {
-                      alert("삭제할 수 없습니다.");
-                    }
+                <li
+                  onClick={() => {
+                    setModify(!modify);
                   }}
-                  className="p-4 text-base text-red-400 active:bg-rose-400 active:text-white"
+                  className=""
                 >
-                  삭제하기
-                </p>
-              </li>
-            </ul>
-          </div>
+                  <p className="p-4 text-base active:bg-gray-400">수정하기</p>
+                </li>
+                <li>
+                  <p
+                    onClick={async () => {
+                      try {
+                        await axios({
+                          url: `${url}/api/post/delete/${postId}`,
+                          method: "DELETE",
+                        });
+                        alert("게시글이 삭제되었습니다.");
+                        showModal();
+                        getHotPostList();
+                      } catch (e) {
+                        alert("삭제할 수 없습니다.");
+                      }
+                    }}
+                    className="p-4 text-base text-red-400 active:bg-rose-400 active:text-white"
+                  >
+                    삭제하기
+                  </p>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         {/* 포스트 내용 */}
         <div
