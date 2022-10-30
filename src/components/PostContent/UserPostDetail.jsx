@@ -104,7 +104,20 @@ const UserPostDetail = ({
                 <span className="text-gray-500">{postDate}</span>
               </div>
             </div>
-            <div className="flex items-center text-xl">
+            <div
+              className="flex items-center text-xl cursor-pointer"
+              onClick={async () => {
+                try {
+                  await axios({
+                    url: `${url}/api/post/like/${postId}`,
+                    method: "POST",
+                  });
+                  getUserPostList();
+                } catch (e) {
+                  alert("좋아요를 누를 수 없습니다.");
+                }
+              }}
+            >
               <FaHeart />
               <span className="ml-2 text-lg">{postLike}</span>
             </div>
