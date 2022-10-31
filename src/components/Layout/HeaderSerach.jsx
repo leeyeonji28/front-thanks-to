@@ -1,16 +1,36 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { searchState } from "../../recoil/searchState";
 
 const HeaderSerach = () => {
+  const navigate = useNavigate();
+  const [searchWord, setSearchWord] = useRecoilState(searchState);
+
   return (
     <div>
       <div className="form-control">
-        <div className="input-group">
+        <form
+          className="input-group"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <input
             type="text"
             placeholder="Search…"
             className="input input-bordered border-0"
+            onChange={(e) => {
+              setSearchWord(e.target.value);
+            }}
           />
-          <button className="btn btn-square bg-rose-500 hover:bg-rose-300 border-0">
+          <button
+            className="btn btn-square bg-rose-500 hover:bg-rose-300 border-0"
+            onClick={() => {
+              navigate(`/search/${searchWord}`);
+              setSearchWord("");
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -26,7 +46,7 @@ const HeaderSerach = () => {
               />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

@@ -9,9 +9,7 @@ import Post from "./routes/Post";
 import HotPost from "./routes/HotPost";
 import MyPage from "./routes/MyPage";
 import MyPageModify from "./routes/MyPageModify";
-
-// import { RecoilRoot, useRecoilState } from "recoil";
-// import { userState } from "./recoil/user";
+import PostSearch from "./routes/PostSearch";
 
 function App() {
   const access = useRecoilState(loginState);
@@ -33,6 +31,7 @@ function App() {
             path="/mypage/:userId/modify"
             element={<MyPageModify />}
           ></Route>
+          <Route path="/search/:keyword" element={<PostSearch />}></Route>
         </Routes>
       </Router>
     </div>
