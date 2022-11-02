@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { HiLockOpen, HiLockClosed } from "react-icons/hi";
 import { url } from "../../utile/url";
@@ -13,18 +12,11 @@ const CreateModal = ({ userImg, userName, showModal }) => {
   const [files, setFiles] = useState([]);
   const userId = useRecoilValue(loginState);
 
-  console.log(files.length);
-
   const [postValue, setPostValue] = useState({
     postImg: "",
     postTitle: "",
     postContent: "",
   });
-
-  // userId
-  useEffect(() => {
-    // setUserId(localStorage.getItem("id"));
-  }, []);
 
   const postCheck = () => {
     if (postValue.postTitle === "") {
@@ -36,7 +28,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
 
   const postCreate = async () => {
     const formData = new FormData();
-    if (files.length != 0) {
+    if (files.length !== 0) {
       formData.append("postImage", files.length && files[0].uploadedFile);
     } else {
       const fileNull = new Blob([JSON.stringify("")], {
@@ -57,7 +49,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
 
     formData.append("createPostDto", blob);
 
-    const createData = await axios({
+    await axios({
       url: `${url}/api/${userId}/post/create`,
       method: "POST",
       headers: {

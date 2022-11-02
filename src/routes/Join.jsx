@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { choco } from "../assets/images/choco.jpeg";
 
 const Join = () => {
   const [imageSrc, setImageSrc] = useState();
   const [files, setFiles] = useState([]);
   const [showPwd, setShowPwd] = useState(false);
+  const [joinData, setJoinData] = useState({
+    username: "",
+    password: "",
+    nickName: "",
+    userSay: "",
+    profileImg: "",
+  });
 
   const togglePass = (e) => {
     e.preventDefault();
