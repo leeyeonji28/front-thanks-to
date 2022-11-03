@@ -49,19 +49,22 @@ const CreateModal = ({ userImg, userName, showModal }) => {
 
     formData.append("createPostDto", blob);
 
-    await axios({
-      url: `${url}/api/${userId}/post/create`,
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("Token"),
-        "Content-Type": "multipart/form-data",
-      },
-      data: formData,
-    });
+    try {
+      await axios({
+        url: `${url}/api/${userId}/post/create`,
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("Token"),
+          "Content-Type": "multipart/form-data",
+        },
+        data: formData,
+      });
 
-    alert("포스팅이 완료되었습니다.");
-    console.log(formData);
-    showModal();
+      alert("포스팅이 완료되었습니다.");
+      showModal();
+    } catch (e) {
+      alert(e);
+    }
   };
 
   const encodeFileToBase64 = (fileBlob) => {

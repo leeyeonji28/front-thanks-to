@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { choco } from "../assets/images/choco.jpeg";
+import { url } from "../utile/url";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Join = () => {
   const [imageSrc, setImageSrc] = useState();
   const [files, setFiles] = useState([]);
   const [showPwd, setShowPwd] = useState(false);
+  const navigate = useNavigate();
   const [joinData, setJoinData] = useState({
     username: "",
     password: "",
@@ -15,10 +19,63 @@ const Join = () => {
     profileImg: "",
   });
 
+  const joinCheck = () => {
+    if (joinData.username === "") {
+      alert("아이디를 입력해주세요.");
+    } else if (joinData.password === "") {
+      alert("비밀번호를 입력해주세요.");
+    } else if (joinData.nickName === "") {
+      alert("닉네임을 입력해주세요.");
+    } else if (joinData.userSay === "") {
+      alert("소개말을 입력해주세요.");
+    } else if (imageSrc === "") {
+      alert("프로필 사진을 등록해주세요.");
+    }
+  };
+
   const togglePass = (e) => {
     e.preventDefault();
+  };
 
-    setShowPwd(!showPwd);
+  const userJoin = async () => {
+    const formData = new FormData();
+    if (files.length !== 0) {
+      formData.append("profileImg", files.length && files[0].uploadedFile);
+    } else {
+      const fileNull = new Blob([JSON.stringify("")], {
+        type: "application/json",
+      });
+      formData.append("profileImg", fileNull);
+    }
+
+    const value = {
+      username: joinData.username,
+      password: joinData.password,
+      nickName: joinData.nickName,
+      userSay: joinData.userSay,
+      profileImg: "",
+    };
+
+    const blob = new Blob([JSON.stringify(value)], {
+      type: "application/json",
+    });
+
+    formData.append("user", blob);
+    try {
+      await axios({
+        url: `${url}/api/join`,
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        data: formData,
+      });
+
+      alert("회원가입이 완료되었습니다.");
+      navigate(`/login`);
+    } catch (e) {
+      alert("다른 아이디를 입력해 주세요.");
+    }
   };
 
   const encodeFileToBase64 = (fileBlob) => {
@@ -48,17 +105,35 @@ const Join = () => {
         <h1 className="mb-14 text-5xl text-rose-500 font-bold">
           Create Account
         </h1>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            joinCheck();
+            userJoin();
+          }}
+        >
           <input
             type="text"
             placeholder="Id"
             className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+            onChange={(e) => {
+              setJoinData({
+                ...joinData,
+                username: e.target.value,
+              });
+            }}
           />
           <div className="relative">
             <input
               type={showPwd ? "text" : "Password"}
               placeholder="Password"
               className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+              onChange={(e) => {
+                setJoinData({
+                  ...joinData,
+                  password: e.target.value,
+                });
+              }}
             />
             <div
               onClick={(e) => {
@@ -75,16 +150,27 @@ const Join = () => {
           <input
             type="text"
             placeholder="Nick Name"
+            maxLength={6}
             className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+            onChange={(e) => {
+              setJoinData({
+                ...joinData,
+                nickName: e.target.value,
+              });
+            }}
           />
           <div className="relative">
+            <div className="flex justify-center items-center w-full h-44 mb-4 border border-gray-300 rounded-lg cursor-pointer z-10">
+              <div>
+                <p className="text-gray-400">Image</p>
+              </div>
+            </div>
             <label
               htmlFor="selector_img"
-              className="flex justify-center items-center w-[350px] h-52 mb-4 rounded-lg bg-gray-300 cursor-pointer"
+              className="absolute bottom-3 right-3 btn btn-circle bg-gray-400 border-gray-400 z-20"
             >
               <div>
-                <HiOutlineCamera className="m-auto text-5xl text-white " />
-                <p className="text-white">Profile Image</p>
+                <HiOutlineCamera className="m-auto text-2xl text-white " />
               </div>
             </label>
             <input
@@ -102,7 +188,7 @@ const Join = () => {
             <div
               className={
                 imageSrc
-                  ? "absolute top-0 w-[350px] h-52 rounded-lg bg-white overflow-hidden"
+                  ? "absolute top-0 w-[350px] h-44 rounded-lg bg-white overflow-hidden"
                   : "hidden"
               }
             >
@@ -116,6 +202,13 @@ const Join = () => {
           <textarea
             placeholder="About you"
             className="block w-[350px] p-4 mb-12 rounded-lg border border-gray-300 outline-rose-500"
+            maxLength={20}
+            onChange={(e) => {
+              setJoinData({
+                ...joinData,
+                userSay: e.target.value,
+              });
+            }}
           />
           <button className="w-[350px] p-4 bg-rose-500 text-white rounded-lg ">
             Join
