@@ -105,12 +105,14 @@ const CreateModal = ({ userImg, userName, showModal }) => {
           ✕
         </div>
         {/* 프로필 */}
-        <div className="my-8 text-left">
-          <img
-            src={userImg}
-            alt={userName}
-            className="inline-block w-14 mr-5 shadow-lg"
-          />
+        <div className="flex items-center my-8 text-left">
+          <div className="inline-block w-14 mr-5 rounded-md overflow-hidden">
+            <img
+              src={userImg}
+              alt={userName}
+              className="inline-block w-14 shadow-lg"
+            />
+          </div>
           <b className="text-lg">{userName}</b>
         </div>
         <form
