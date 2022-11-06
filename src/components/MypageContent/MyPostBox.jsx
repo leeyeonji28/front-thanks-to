@@ -11,6 +11,7 @@ const MyPostBox = ({
   postLike,
   userNick,
   userImg,
+  postUserId,
   getUserInfo,
 }) => {
   const [modal, setModal] = useState(false);
@@ -49,6 +50,7 @@ const MyPostBox = ({
           postLike={postLike}
           userNick={userNick}
           userImg={userImg}
+          postUserId={postUserId}
           showModal={showModal}
           getUserInfo={getUserInfo}
         />

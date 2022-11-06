@@ -5,7 +5,7 @@ import { CgSpinner } from "react-icons/cg";
 import { url } from "../utile/url";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../recoil/loginState";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HiChevronDoubleDown } from "react-icons/hi";
 import MyPostBox from "../components/MypageContent/MyPostBox";
 
@@ -14,13 +14,13 @@ const MyPage = () => {
   const [error, setError] = useState("");
   const [userInfo, setUserInfo] = useState("");
   const [userPostList, setUserPostList] = useState([]);
-  const userId = useRecoilValue(loginState);
+  const { myId } = useParams();
   const navigate = useNavigate();
 
   const getUserInfo = async () => {
     try {
       const json = await axios({
-        url: `${url}/api/user/${userId}`,
+        url: `${url}/api/user/${myId}`,
         method: "GET",
       });
       setUserInfo(json.data);
@@ -102,6 +102,7 @@ const MyPage = () => {
                   postLike={list.postLike}
                   userNick={userInfo.nickName}
                   userImg={userInfo.profileImg}
+                  postUserId={userInfo.id}
                   getUserInfo={getUserInfo}
                 />
               ))}

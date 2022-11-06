@@ -26,11 +26,8 @@ function App() {
           <Route path="/info" element={<Info />}></Route>
           <Route path="/post" element={<Post />}></Route>
           <Route path="/hot_post" element={<HotPost />}></Route>
-          <Route path="/mypage/:userId" element={<MyPage />}></Route>
-          <Route
-            path="/mypage/:userId/modify"
-            element={<MyPageModify />}
-          ></Route>
+          <Route path="/mypage/:myId" element={<MyPage />}></Route>
+          <Route path="/mypage/:myId/modify" element={<MyPageModify />}></Route>
           <Route path="/search/:keyword" element={<PostSearch />}></Route>
         </Routes>
       </Router>

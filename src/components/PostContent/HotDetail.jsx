@@ -9,6 +9,7 @@ import { url } from "../../utile/url";
 import { IoNotifications } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
+import { Link } from "react-router-dom";
 
 const HotDetail = ({
   postId,
@@ -34,7 +35,6 @@ const HotDetail = ({
     setDivHeight(ref.current.scrollHeight);
   };
 
-  console.log(postUserId);
   useEffect(() => {
     boxHeight();
   }, [ref]);
@@ -105,15 +105,17 @@ const HotDetail = ({
           }
         >
           <div className="flex justify-between items-center pb-8 border-b">
-            <div className="flex items-center">
-              <div className="w-16 mr-4 border shadow-lg rounded-lg overflow-hidden">
-                <img src={userImg} alt="" className="h-16" />
+            <Link to={`/mypage/${postUserId}`}>
+              <div className="flex items-center">
+                <div className="w-16 mr-4 border shadow-lg rounded-lg overflow-hidden">
+                  <img src={userImg} alt="" className="h-16" />
+                </div>
+                <div>
+                  <b className="block text-xl">{userNick}</b>
+                  <span className="text-gray-500">{postDate}</span>
+                </div>
               </div>
-              <div>
-                <b className="block text-xl">{userNick}</b>
-                <span className="text-gray-500">{postDate}</span>
-              </div>
-            </div>
+            </Link>
             <div
               className="flex items-center text-xl cursor-pointer"
               onClick={async () => {
