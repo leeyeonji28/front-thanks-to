@@ -6,11 +6,14 @@ import { url } from "../utile/url";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../recoil/loginState";
 import { useNavigate } from "react-router-dom";
+import { HiChevronDoubleDown } from "react-icons/hi";
+import MyPostBox from "../components/MypageContent/MyPostBox";
 
 const MyPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [userInfo, setUserInfo] = useState("");
+  const [userPostList, setUserPostList] = useState([]);
   const userId = useRecoilValue(loginState);
   const navigate = useNavigate();
 
@@ -21,6 +24,7 @@ const MyPage = () => {
         method: "GET",
       });
       setUserInfo(json.data);
+      setUserPostList(json.data.postList);
       setIsLoading(false);
     } catch (e) {
       setError(e);
@@ -53,63 +57,59 @@ const MyPage = () => {
     <Layout>
       <div className="w-[1170px] h-[855px] bg-white rounded-lg">
         <h3 className="p-7 pb-0 text-2xl font-bold">Profile</h3>
-        <div className="flex justify-between p-7">
-          <div className="w-80 h-80 border shadow-lg rounded-lg overflow-hidden">
-            <img src={userInfo.profileImg} alt="" className="h-80" />
-          </div>
-          <div>
-            <div>
-              <b>Your Name</b>
-              <p className="w-[730px] border-2 rounded-lg p-4 mt-2 mb-10 outline-none">
-                {userInfo.username}
-              </p>
+        <div className="flex">
+          <div className="p-7">
+            <div className="w-80 h-80 border shadow-lg rounded-lg overflow-hidden">
+              <img src={userInfo.profileImg} alt="" className="h-80" />
             </div>
-            <div>
-              <b>Your Nick Name</b>
-              <p className="w-[730px] border-2 rounded-lg p-4 mt-2 mb-10 outline-none">
-                {userInfo.nickName}
+            <div className="w-80 border-2 rounded-lg p-4 mt-10 mb-10 outline-none">
+              <p>
+                <b>Your Name</b> : {userInfo.username}
               </p>
-            </div>
-            <div>
-              <b>Aout you</b>
-              <p className="w-[730px] border-2 rounded-lg p-4 mt-2 mb-10 outline-none">
-                {userInfo.userSay}
+              <p className="mt-2">
+                <b>Your Nick Name</b> : {userInfo.nickName}
+              </p>
+              <p className="mt-2">
+                <b>Aout you</b> : {userInfo.userSay}
               </p>
             </div>
           </div>
-        </div>
-        <button
+          {/* <button
           className="btn bg-rose-500 border-0 mt-16 mb-20 ml-[1080px] hover:bg-rose-300"
           onClick={() => {
             navigate(`/mypage/${userId}/modify`);
           }}
         >
           Edit
-        </button>
-        <div className="flex justify-between items-center mt-8 p-7 pt-8 border-t-2">
-          <h4 className="text-rose-500 font-bold text-2xl">Thanks to</h4>
-          <ul className="flex">
-            <div>
-              <li className="mr-8">
-                <b className="inline-block w-14">Add</b>
-                대전광역시 유성구 봉명동 123번지 Thanks to
-              </li>
-              <li>
-                <b className="inline-block w-14">Mail</b>
-                thanks2@thanksto.com
-              </li>
+        </button> */}
+          <div className="relative">
+            <p className="pt-7 pl-7 mb-7 text-lg">
+              {userInfo.username}님의 일기를 확인해 보아요.
+              <br />
+              <span className="text-base">
+                (스크롤을 내리면 더 많은 일기를 볼 수 있습니다!)
+              </span>
+            </p>
+            <div className="h-[655px] p-7 pt-0 overflow-y-scroll">
+              {userPostList.reverse().map((list, i) => (
+                <MyPostBox
+                  key={i}
+                  postId={list.id}
+                  postTitle={list.postTitle}
+                  postContent={list.postContent}
+                  postImg={list.postImg}
+                  postDate={list.postDate}
+                  postLike={list.postLike}
+                  userNick={userInfo.nickName}
+                  userImg={userInfo.profileImg}
+                  getUserInfo={getUserInfo}
+                />
+              ))}
             </div>
-            <div>
-              <li>
-                <b className="inline-block w-14">Tel</b>
-                042 - 123 - 1234 / 042 - 456 - 4567
-              </li>
-              <li>
-                <b className="inline-block w-14">Fax</b>
-                070 - 1234 - 1234
-              </li>
+            <div className="absolute top-[720px] left-[390px] animate-bounce">
+              <HiChevronDoubleDown className="text-3xl text-gray-300" />
             </div>
-          </ul>
+          </div>
         </div>
       </div>
     </Layout>

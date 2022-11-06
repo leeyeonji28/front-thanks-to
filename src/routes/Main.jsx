@@ -13,12 +13,6 @@ import { useRecoilValue } from "recoil";
 import { loginState } from "../recoil/loginState";
 import Layout from "../components/Layout/Layout";
 
-// const config = {
-//   headers: {
-//     Authorization: "Bearer " + localStorage.getItem("jwtToken"),
-//   },
-// };
-
 const Main = () => {
   const access = useRecoilValue(loginState);
   const [isLogin, setIsLogin] = useState(true);
