@@ -10,7 +10,7 @@ const HotPost = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [getPostData, setGetPostData] = useState([]);
-  const [listLenght, setListLenght] = useState();
+  const [listLenght, setListLenght] = useState(0);
 
   const getPostList = async () => {
     try {
@@ -51,22 +51,30 @@ const HotPost = () => {
 
   return (
     <Layout>
-      <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
-        <div>
-          {getPostData
-            .slice(listLenght - 30, listLenght)
-            .reverse()
-            .map((data, index) => (
-              <HotPostBox key={index} postId={data.id} />
-            ))}
-        </div>
-      </div>
-      {getPostData.length > 3 ? (
-        <div className="absolute top-[860px] left-[655px] animate-bounce">
-          <HiChevronDoubleDown className="text-3xl text-gray-300" />
+      {getPostData.length == 0 ? (
+        <div className="flex justify-center items-center w-[1170px] h-[855px] rounded-lg bg-white">
+          아직 게시글이 없습니다.
         </div>
       ) : (
-        ""
+        <div>
+          <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+            <div>
+              {getPostData
+                .slice(listLenght - 30, listLenght)
+                .reverse()
+                .map((data, index) => (
+                  <HotPostBox key={index} postId={data.id} />
+                ))}
+            </div>
+          </div>
+          {getPostData.length > 3 ? (
+            <div className="absolute top-[860px] left-[655px] animate-bounce">
+              <HiChevronDoubleDown className="text-3xl text-gray-300" />
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       )}
     </Layout>
   );
