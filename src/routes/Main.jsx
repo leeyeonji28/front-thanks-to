@@ -1,6 +1,5 @@
 import React from "react";
 import MainCalendar from "../components/MainContent/MainCalendar";
-import MainFollow from "../components/MainContent/MainFollow";
 import MainGraph from "../components/MainContent/MainGraph";
 import MainList from "../components/MainContent/MainList";
 import MainProfile from "../components/MainContent/MainProfile";
@@ -12,6 +11,7 @@ import { CgSpinner } from "react-icons/cg";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../recoil/loginState";
 import Layout from "../components/Layout/Layout";
+import MainLifeQuotes from "../components/LifeQuotes/MainLifeQuotes";
 
 const Main = () => {
   const access = useRecoilValue(loginState);
@@ -60,7 +60,7 @@ const Main = () => {
             <MainCalendar />
           </div>
           <div className="bg-white rounded-lg">
-            <MainFollow />
+            <MainLifeQuotes />
           </div>
         </div>
       </div>
