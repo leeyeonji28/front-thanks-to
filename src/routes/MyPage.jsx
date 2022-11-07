@@ -83,33 +83,41 @@ const MyPage = () => {
           Edit
         </button> */}
           <div className="relative">
-            <p className="pt-7 pl-7 mb-7 text-lg">
-              {userInfo.username}님의 일기를 확인해 보아요.
-              <br />
-              <span className="text-base">
-                (스크롤을 내리면 더 많은 일기를 볼 수 있습니다!)
-              </span>
-            </p>
-            <div className="h-[655px] p-7 pt-0 overflow-y-scroll">
-              {userPostList.reverse().map((list, i) => (
-                <MyPostBox
-                  key={i}
-                  postId={list.id}
-                  postTitle={list.postTitle}
-                  postContent={list.postContent}
-                  postImg={list.postImg}
-                  postDate={list.postDate}
-                  postLike={list.postLike}
-                  userNick={userInfo.nickName}
-                  userImg={userInfo.profileImg}
-                  postUserId={userInfo.id}
-                  getUserInfo={getUserInfo}
-                />
-              ))}
-            </div>
-            <div className="absolute top-[720px] left-[390px] animate-bounce">
-              <HiChevronDoubleDown className="text-3xl text-gray-300" />
-            </div>
+            {userPostList.length == 0 ? (
+              <div className="flex justify-center items-center w-[758px] h-[730px] mt-7 border">
+                아직 게시글이 없습니다.
+              </div>
+            ) : (
+              <div>
+                <p className="pt-7 pl-7 mb-7 text-lg">
+                  {userInfo.username}님의 일기를 확인해 보아요.
+                  <br />
+                  <span className="text-base">
+                    (스크롤을 내리면 더 많은 일기를 볼 수 있습니다!)
+                  </span>
+                </p>
+                <div className="h-[655px] p-7 pt-0 overflow-y-scroll">
+                  {userPostList.reverse().map((list, i) => (
+                    <MyPostBox
+                      key={i}
+                      postId={list.id}
+                      postTitle={list.postTitle}
+                      postContent={list.postContent}
+                      postImg={list.postImg}
+                      postDate={list.postDate}
+                      postLike={list.postLike}
+                      userNick={userInfo.nickName}
+                      userImg={userInfo.profileImg}
+                      postUserId={userInfo.id}
+                      getUserInfo={getUserInfo}
+                    />
+                  ))}
+                </div>
+                <div className="absolute top-[720px] left-[390px] animate-bounce">
+                  <HiChevronDoubleDown className="text-3xl text-gray-300" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

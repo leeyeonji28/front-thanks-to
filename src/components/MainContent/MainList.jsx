@@ -63,25 +63,31 @@ const MainList = () => {
           <br />
           그동안 감사했던 기록들을 함께 보아요 😊
         </h3>
-        <div>
-          {getUserPostData
-            .slice(listLenght - 30, listLenght)
-            .reverse()
-            .map((list, i) => (
-              <UserPostBox
-                key={i}
-                postId={list.id}
-                postTitle={list.postTitle}
-                postContent={list.postContent}
-                postImg={list.postImg}
-                postDate={list.postDate}
-                postLike={list.postLike}
-                userNick={userNick}
-                userImg={userImg}
-                getUserPostList={getUserPostList}
-              />
-            ))}
-        </div>
+        {getUserPostData.length == 0 ? (
+          <div className="flex justify-center items-center h-[330px]">
+            아직 게시글이 없습니다.
+          </div>
+        ) : (
+          <div>
+            {getUserPostData
+              .slice(listLenght - 30, listLenght)
+              .reverse()
+              .map((list, i) => (
+                <UserPostBox
+                  key={i}
+                  postId={list.id}
+                  postTitle={list.postTitle}
+                  postContent={list.postContent}
+                  postImg={list.postImg}
+                  postDate={list.postDate}
+                  postLike={list.postLike}
+                  userNick={userNick}
+                  userImg={userImg}
+                  getUserPostList={getUserPostList}
+                />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );
