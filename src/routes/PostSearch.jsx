@@ -5,7 +5,7 @@ import { CgSpinner } from "react-icons/cg";
 import { HiChevronDoubleDown } from "react-icons/hi";
 import axios from "axios";
 import Layout from "../components/Layout/Layout";
-import SearchPostBox from "../components/PostContent/SearchPostBox";
+import SearchPostBox from "../components/postSearch/SearchPostBox";
 
 const PostSearch = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,19 +51,27 @@ const PostSearch = () => {
 
   return (
     <Layout>
-      <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
-        <div>
-          {searchList.reverse().map((data, index) => (
-            <SearchPostBox key={index} postId={data.id} />
-          ))}
-        </div>
-      </div>
-      {searchList.length > 3 ? (
-        <div className="absolute top-[860px] left-[655px] animate-bounce">
-          <HiChevronDoubleDown className="text-3xl text-gray-300" />
+      {searchList.length == 0 ? (
+        <div className="flex justify-center items-center w-[1170px] h-[855px] rounded-lg bg-white">
+          검색어에 해당되는 게시글이 없습니다.
         </div>
       ) : (
-        ""
+        <div>
+          <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+            <div>
+              {searchList.reverse().map((data, index) => (
+                <SearchPostBox key={index} postId={data.id} />
+              ))}
+            </div>
+          </div>
+          {searchList.length > 3 ? (
+            <div className="absolute top-[860px] left-[655px] animate-bounce">
+              <HiChevronDoubleDown className="text-3xl text-gray-300" />
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       )}
     </Layout>
   );

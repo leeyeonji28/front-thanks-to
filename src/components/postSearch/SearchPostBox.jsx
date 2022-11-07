@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { IoHeartSharp } from "react-icons/io5";
-import SearchDetail from "../../routes/SearchDetail";
+import SearchDetail from "./SearchDetail";
 import { url } from "../../utile/url";
 
 const SearchPostBox = ({ postId }) => {

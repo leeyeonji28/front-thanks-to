@@ -5,11 +5,10 @@ import { useState } from "react";
 import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
-
 import { IoNotifications } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
-import { loginState } from "../recoil/loginState";
-import { url } from "../utile/url";
+import { loginState } from "../../recoil/loginState";
+import { url } from "../../utile/url";
 
 const SearchDetail = ({
   postId,
