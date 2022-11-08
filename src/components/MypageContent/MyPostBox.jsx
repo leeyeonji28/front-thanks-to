@@ -9,6 +9,7 @@ const MyPostBox = ({
   postDate,
   postImg,
   postLike,
+  postLock,
   userNick,
   userImg,
   postUserId,
@@ -48,6 +49,7 @@ const MyPostBox = ({
           postDate={postDate}
           postImg={postImg}
           postLike={postLike}
+          postLock={postLock}
           userNick={userNick}
           userImg={userImg}
           postUserId={postUserId}

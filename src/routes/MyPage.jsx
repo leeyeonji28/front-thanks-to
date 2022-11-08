@@ -96,7 +96,7 @@ const MyPage = () => {
                     (스크롤을 내리면 더 많은 일기를 볼 수 있습니다!)
                   </span>
                 </p>
-                <div className="h-[655px] p-7 pt-0 overflow-y-scroll">
+                <div className="h-[655px] p-7 pt-0 overflow-y-scroll scrollbar-hide">
                   {userPostList.reverse().map((list, i) => (
                     <MyPostBox
                       key={i}
@@ -106,6 +106,7 @@ const MyPage = () => {
                       postImg={list.postImg}
                       postDate={list.postDate}
                       postLike={list.postLike}
+                      postLock={list.postLock}
                       userNick={userInfo.nickName}
                       userImg={userInfo.profileImg}
                       postUserId={userInfo.id}

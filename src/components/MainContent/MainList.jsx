@@ -81,6 +81,7 @@ const MainList = () => {
                   postImg={list.postImg}
                   postDate={list.postDate}
                   postLike={list.postLike}
+                  postLock={list.postLock}
                   userNick={userNick}
                   userImg={userImg}
                   getUserPostList={getUserPostList}

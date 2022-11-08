@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { HiOutlineCamera } from "react-icons/hi";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { choco } from "../assets/images/choco.jpeg";
 import { url } from "../utile/url";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -35,6 +34,7 @@ const Join = () => {
 
   const togglePass = (e) => {
     e.preventDefault();
+    setShowPwd(!showPwd);
   };
 
   const userJoin = async () => {

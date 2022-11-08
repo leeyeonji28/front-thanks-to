@@ -16,6 +16,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
     postImg: "",
     postTitle: "",
     postContent: "",
+    postLock: "false",
   });
 
   const postCheck = () => {
@@ -41,6 +42,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
       postImg: "",
       postTitle: postValue.postTitle,
       postContent: postValue.postContent,
+      postLock: postValue.postLock,
     };
 
     const blob = new Blob([JSON.stringify(value)], {
@@ -89,7 +91,19 @@ const CreateModal = ({ userImg, userName, showModal }) => {
   };
 
   const lockCheck = (e) => {
-    setPostLock(e.target.checked);
+    if (e.target.checked == true) {
+      setPostValue({
+        ...postValue,
+        postLock: "true",
+      });
+      setPostLock(true);
+    } else {
+      setPostValue({
+        ...postValue,
+        postLock: "false",
+      });
+      setPostLock(false);
+    }
   };
 
   return (
@@ -187,7 +201,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
             className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
           />
           {/* 공개여부 체크 */}
-          <label htmlFor="lock">
+          <label htmlFor="lock" className="cursor-pointer">
             {postLock ? (
               <div className="text-right">
                 <HiLockClosed className="inline-block text-2xl" />
@@ -203,7 +217,12 @@ const CreateModal = ({ userImg, userName, showModal }) => {
           <input
             type="checkbox"
             id="lock"
-            onChange={lockCheck}
+            onChange={(e) => {
+              lockCheck(e);
+            }}
+            onClick={(e) => {
+              console.log(e.target.checked);
+            }}
             className="hidden"
           />
           {/* 전송 버튼 */}

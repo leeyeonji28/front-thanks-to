@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { IoHeartSharp } from "react-icons/io5";
+import { useRecoilValue } from "recoil";
+import { loginState } from "../../recoil/loginState";
 import { url } from "../../utile/url";
 import HotDetail from "../PostContent/HotDetail";
 
@@ -13,6 +15,7 @@ const HotPostBox = ({ postId }) => {
   const [userNick, setUserNick] = useState();
   const [userImg, setUserImg] = useState();
   const [modal, setModal] = useState(false);
+  const userId = useRecoilValue(loginState);
 
   const getHotPostList = async () => {
     try {
@@ -35,7 +38,15 @@ const HotPostBox = ({ postId }) => {
   }, []);
 
   function showModal() {
-    setModal(!modal);
+    if (hotData.postLock == "true") {
+      if (postUserId == userId) {
+        setModal(!modal);
+      } else {
+        alert("비밀글은 작성자만 열람 가능합니다.");
+      }
+    } else {
+      setModal(!modal);
+    }
   }
 
   if (error) {
@@ -64,33 +75,48 @@ const HotPostBox = ({ postId }) => {
           showModal();
         }}
       >
-        {hotData.postImg !== "" ? (
-          <div className="flex justify-center items-center w-[800px] overflow-hidden">
-            <img src={hotData.postImg} alt="" />
-          </div>
-        ) : (
-          ""
-        )}
-        <div className="w-full">
-          <div className="p-3">
-            <b className="block mb-3 text-xl">{hotData.postTitle}</b>
-            <p className="h-28">
-              {hotData.postContent.length > 300
-                ? `${hotData.postContent.slice(0, 300)}...`
-                : hotData.postContent}
-            </p>
-            <p className="mt-3 text-gray-400">{hotData.postDate}</p>
-          </div>
-          <div className="p-3 border-t">
-            <div className="flex justify-between items-center">
-              <b>{userNick}</b>
-              <div className="text-gray-500">
-                <IoHeartSharp className="inline-block mr-2 text-xl" />
-                <span>{hotData.postLike}</span>
+        {hotData.postLock == "false" ? (
+          <div className="flex w-full">
+            {hotData.postImg !== "" ? (
+              <div className="flex justify-center items-center w-[800px] overflow-hidden">
+                <img src={hotData.postImg} alt="" />
+              </div>
+            ) : (
+              ""
+            )}
+            <div className="w-full">
+              <div className="p-3">
+                <b className="block mb-3 text-xl">{hotData.postTitle}</b>
+                <p className="h-28">
+                  {hotData.postContent.length > 300
+                    ? `${hotData.postContent.slice(0, 300)}...`
+                    : hotData.postContent}
+                </p>
+                <p className="mt-3 text-gray-400">{hotData.postDate}</p>
+              </div>
+              <div className="p-3 border-t">
+                <div className="flex justify-between items-center">
+                  <b>{userNick}</b>
+                  <div className="text-gray-500">
+                    <IoHeartSharp className="inline-block mr-2 text-xl" />
+                    <span>{hotData.postLike}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="w-full">
+            <div className="p-3">
+              <b className="block mb-3 text-xl">비밀글 입니다.</b>
+              <p className="h-28"></p>
+              <p className="mt-3 text-gray-400">{hotData.postDate}</p>
+            </div>
+            <div className="p-3 border-t">
+              <b>{userNick}</b>
+            </div>
+          </div>
+        )}
       </div>
 
       {modal === true ? (
@@ -101,6 +127,7 @@ const HotPostBox = ({ postId }) => {
           postDate={hotData.postDate}
           postImg={hotData.postImg}
           postLike={hotData.postLike}
+          postLock={hotData.postLock}
           showModal={showModal}
           postUserId={postUserId}
           userNick={userNick}

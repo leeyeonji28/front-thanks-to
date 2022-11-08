@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { HiLockClosed } from "react-icons/hi";
 import { url } from "../../utile/url";
 import { IoNotifications } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
@@ -17,6 +18,7 @@ const PostDetail = ({
   postDate,
   postImg,
   postLike,
+  postLock,
   showModal,
   postUserId,
   userNick,
@@ -109,6 +111,11 @@ const PostDetail = ({
               <div>
                 <b className="block text-xl">{userNick}</b>
                 <span className="text-gray-500">{postDate}</span>
+                {postLock == "true" ? (
+                  <HiLockClosed className="inline-block ml-2" />
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div

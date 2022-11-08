@@ -8,6 +8,7 @@ const UserPostBox = ({
   postDate,
   postImg,
   postLike,
+  postLock,
   userNick,
   userImg,
   getUserPostList,
@@ -46,6 +47,7 @@ const UserPostBox = ({
           postDate={postDate}
           postImg={postImg}
           postLike={postLike}
+          postLock={postLock}
           userNick={userNick}
           userImg={userImg}
           showModal={showModal}
