@@ -13,7 +13,6 @@ const Login = () => {
 
   const togglePass = (e) => {
     e.preventDefault();
-
     setShowPwd(!showPwd);
   };
 
@@ -43,13 +42,10 @@ const Login = () => {
 
         localStorage.setItem("Token", jwtToken);
         localStorage.setItem("id", dec.id);
-
-        // console.log(jwtToken);
-        // console.log(dec.id);
         navigate("/home");
       } catch (e) {
         console.log(e);
-        alert("Id 또는 Password를 다시 확인해 주세요.");
+        alert(e);
       }
     } else if (userId === "") {
       alert("Id를 입력해 주세요!");

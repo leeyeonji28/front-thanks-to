@@ -13,24 +13,20 @@ const HeaderSerach = () => {
         <form
           className="input-group"
           onSubmit={(e) => {
-            e.preventDefault();
+            // e.preventDefault();
+            navigate(`/search/${searchWord}`);
           }}
         >
           <input
             type="text"
             placeholder="Search…"
             className="input input-bordered border-0"
+            value={searchWord}
             onChange={(e) => {
               setSearchWord(e.target.value);
             }}
           />
-          <button
-            className="btn btn-square bg-rose-500 hover:bg-rose-300 border-0"
-            onClick={() => {
-              navigate(`/search/${searchWord}`);
-              setSearchWord("");
-            }}
-          >
+          <button className="btn btn-square bg-rose-500 hover:bg-rose-300 border-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
