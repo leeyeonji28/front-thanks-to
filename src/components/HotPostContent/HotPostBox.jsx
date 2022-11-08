@@ -5,7 +5,7 @@ import { IoHeartSharp } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
 import { url } from "../../utile/url";
-import HotDetail from "../PostContent/HotDetail";
+import HotDetail from "../HotPostContent/HotDetail";
 
 const HotPostBox = ({ postId }) => {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserPostDetail from "../PostContent/UserPostDetail";
+import UserPostDetail from "./UserPostDetail";
 
 const UserPostBox = ({
   postId,

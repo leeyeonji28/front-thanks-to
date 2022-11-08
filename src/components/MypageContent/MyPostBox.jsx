@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import UserPostDetail from "../PostContent/UserPostDetail";
 import MyPostDetail from "./MyPostDetail";
 
 const MyPostBox = ({

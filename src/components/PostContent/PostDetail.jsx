@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
-import { HiLockClosed } from "react-icons/hi";
+import { HiLockOpen, HiLockClosed } from "react-icons/hi";
 import { url } from "../../utile/url";
 import { IoNotifications } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
@@ -28,6 +28,7 @@ const PostDetail = ({
   const [divHeight, setDivHeight] = useState(0);
   const [titleValue, setTitleValue] = useState(postTitle);
   const [contentValue, setContentValue] = useState(postContent);
+  const [lockValue, setLockValue] = useState(postLock);
   const [modify, setModify] = useState(false);
   const ref = useRef(null);
   const userId = useRecoilValue(loginState);
@@ -39,6 +40,10 @@ const PostDetail = ({
   useEffect(() => {
     boxHeight();
   }, [ref]);
+
+  const lockCheck = (e) => {
+    e.target.checked ? setLockValue("true") : setLockValue("false");
+  };
 
   return (
     <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20">
@@ -185,6 +190,48 @@ const PostDetail = ({
             <p>{postContent}</p>
           )}
           {modify === true ? (
+            <div>
+              {lockValue == "true" ? (
+                <div>
+                  <label htmlFor="lock" className="cursor-pointer">
+                    <div className="text-right">
+                      <HiLockClosed className="inline-block text-2xl" />
+                      <p className="inline-block">나만 보기</p>
+                    </div>
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="lock"
+                    defaultChecked
+                    onChange={(e) => {
+                      lockCheck(e);
+                    }}
+                    className="hidden"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <label htmlFor="lock" className="cursor-pointer">
+                    <div className="text-right">
+                      <HiLockOpen className="inline-block text-2xl" />
+                      <p className="inline-block">전체 공개</p>
+                    </div>
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="lock"
+                    onChange={(e) => {
+                      lockCheck(e);
+                    }}
+                    className="hidden"
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+          {modify === true ? (
             <button
               className="w-full p-4 mt-10 bg-rose-500 text-white rounded-lg hover:bg-rose-300"
               onClick={async () => {
@@ -195,6 +242,7 @@ const PostDetail = ({
                     data: {
                       postTitle: titleValue,
                       postContent: contentValue,
+                      postLock: lockValue,
                       postImg: postImg,
                     },
                   });
