@@ -86,7 +86,7 @@ const HotDetail = ({
                         });
                         alert("게시글이 삭제되었습니다.");
                         showModal();
-                        getHotPostList();
+                        window.location.replace("/hot_post");
                       } catch (e) {
                         alert("삭제할 수 없습니다.");
                       }

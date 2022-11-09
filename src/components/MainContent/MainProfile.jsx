@@ -35,6 +35,8 @@ const MainProfile = () => {
     getUserInfo();
   }, []);
 
+  console.log(userInfo);
+
   if (error) {
     return (
       <div className="flex justify-center items-center w-full h-full">
@@ -74,6 +76,7 @@ const MainProfile = () => {
             userImg={userInfo.profileImg}
             userName={userInfo.nickName}
             showModal={showModal}
+            getUserInfo={getUserInfo}
           />
         ) : null}
       </div>

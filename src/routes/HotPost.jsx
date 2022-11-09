@@ -15,7 +15,7 @@ const HotPost = () => {
   const getPostList = async () => {
     try {
       const json = await axios({
-        url: `${url}/api/post/list/all`,
+        url: `${url}/api/post/list/all/like`,
         method: "GET",
       });
 
@@ -61,7 +61,6 @@ const HotPost = () => {
             <div>
               {getPostData
                 .slice(listLenght - 30, listLenght)
-                .reverse()
                 .map((data, index) => (
                   <HotPostBox key={index} postId={data.id} />
                 ))}

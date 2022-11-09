@@ -13,6 +13,7 @@ const MainList = () => {
   const [error, setError] = useState("");
   const [getUserPostData, setGetUserPostData] = useState([]);
   const userId = useRecoilValue(loginState);
+  const [userInfo, setUserInfo] = useState("");
   const [listLenght, setListLenght] = useState();
   const [userNick, setUserNick] = useState();
   const [userImg, setUserImg] = useState();
@@ -23,6 +24,7 @@ const MainList = () => {
         url: `${url}/api/user/${userId}`,
         method: "GET",
       });
+      setUserInfo(json.data);
       setGetUserPostData(json.data.postList);
       setIsLoading(false);
       setListLenght(json.data.postList.length);
@@ -35,7 +37,7 @@ const MainList = () => {
 
   useEffect(() => {
     getUserPostList();
-  }, []);
+  }, [userInfo]);
 
   if (error) {
     return (

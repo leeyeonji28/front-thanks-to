@@ -6,7 +6,7 @@ import { url } from "../../utile/url";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
 
-const CreateModal = ({ userImg, userName, showModal }) => {
+const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
   const [imageSrc, setImageSrc] = useState("");
   const [postLock, setPostLock] = useState(false);
   const [files, setFiles] = useState([]);
@@ -64,6 +64,7 @@ const CreateModal = ({ userImg, userName, showModal }) => {
 
       alert("포스팅이 완료되었습니다.");
       showModal();
+      getUserInfo();
     } catch (e) {
       alert(e);
     }
