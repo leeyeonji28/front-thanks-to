@@ -22,7 +22,7 @@ const UserPostBox = ({
   return (
     <div className="group">
       <div className="sm:flex sm:flex-wrap block">
-        <b className="sm:w-[104px] h-11 mr-5 sm:p-0 p-2 sm:text-base text-xl text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
+        <b className="sm:w-[104px] h-11 mr-5 sm:py-2 sm:px-0 p-2 sm:text-base text-xl text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
           {postDate}
         </b>
         <div
