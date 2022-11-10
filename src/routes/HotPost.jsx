@@ -57,7 +57,7 @@ const HotPost = () => {
         </div>
       ) : (
         <div>
-          <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+          <div className="sm:w-[1170px] sm:h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
             <div>
               {getPostData
                 .slice(listLenght - 30, listLenght)
@@ -67,7 +67,7 @@ const HotPost = () => {
             </div>
           </div>
           {getPostData.length > 3 ? (
-            <div className="absolute top-[860px] left-[655px] animate-bounce">
+            <div className="sm:block hidden absolute top-[860px] left-[655px] animate-bounce">
               <HiChevronDoubleDown className="text-3xl text-gray-300" />
             </div>
           ) : (

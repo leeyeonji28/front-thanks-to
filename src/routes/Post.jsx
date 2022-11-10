@@ -7,6 +7,7 @@ import PostBox from "../components/PostContent/PostBox";
 import Masonry from "react-masonry-css";
 import { HiChevronDoubleDown } from "react-icons/hi";
 import Layout from "../components/Layout/Layout";
+import { useMediaQuery } from "react-responsive";
 
 const Post = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +31,11 @@ const Post = () => {
   useEffect(() => {
     getPostList();
   }, []);
+
+  // media-query
+  const mobile = useMediaQuery({
+    query: "(max-width:639px)",
+  });
 
   if (error) {
     return (
@@ -57,21 +63,33 @@ const Post = () => {
         </div>
       ) : (
         <div>
-          <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
-            <div>
-              <Masonry breakpointCols={3} className="flex gap-5">
+          {mobile ? (
+            <div className="rounded-lg">
+              <div>
                 {getPostData.map((data, index) => (
                   <PostBox key={index} postId={data.id} />
                 ))}
-              </Masonry>
-            </div>
-          </div>
-          {getPostData.length > 3 ? (
-            <div className="absolute top-[860px] left-[655px] animate-bounce">
-              <HiChevronDoubleDown className="text-3xl text-gray-300" />
+              </div>
             </div>
           ) : (
-            ""
+            <div>
+              <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+                <div>
+                  <Masonry breakpointCols={3} className="flex gap-5">
+                    {getPostData.map((data, index) => (
+                      <PostBox key={index} postId={data.id} />
+                    ))}
+                  </Masonry>
+                </div>
+              </div>
+              {getPostData.length > 3 ? (
+                <div className="absolute top-[860px] left-[655px] animate-bounce">
+                  <HiChevronDoubleDown className="text-3xl text-gray-300" />
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
           )}
         </div>
       )}
