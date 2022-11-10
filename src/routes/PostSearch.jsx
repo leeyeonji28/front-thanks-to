@@ -52,12 +52,12 @@ const PostSearch = () => {
   return (
     <Layout>
       {searchList.length === 0 ? (
-        <div className="flex justify-center items-center w-[1170px] h-[855px] rounded-lg bg-white">
+        <div className="flex justify-center items-center lg:w-[1170px] h-[855px] rounded-lg bg-white">
           검색어에 해당되는 게시글이 없습니다.
         </div>
       ) : (
         <div>
-          <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+          <div className="lg:w-[1170px] lg:h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
             <div>
               {searchList.reverse().map((data, index) => (
                 <SearchPostBox key={index} postId={data.id} />

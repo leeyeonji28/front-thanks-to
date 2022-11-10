@@ -13,6 +13,10 @@ const Header = () => {
   const userId = useRecoilValue(loginState);
 
   // media-query
+  const tablet = useMediaQuery({
+    query: "(max-width:1023px)",
+  });
+
   const mobile = useMediaQuery({
     query: "(max-width:639px)",
   });
@@ -28,12 +32,12 @@ const Header = () => {
 
   return (
     <div>
-      {mobile ? (
+      {mobile || tablet ? (
         <div className="fixed w-screen px-4 z-30">
           <div className="flex justify-between items-center mb-5 pt-4">
-            <div class="relative">
+            <div className="relative">
               <label
-                tabindex="0"
+                tabIndex="0"
                 className="flex flex-col justify-between w-8 h-6"
               >
                 <input
@@ -46,11 +50,11 @@ const Header = () => {
                 <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
                 <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
                 <div
-                  tabindex="0"
-                  class="peer-checked:block hidden w-screen h-screen bg-black bg-opacity-20 absolute -top-10 -left-[50%]"
+                  tabIndex="0"
+                  className="peer-checked:block hidden w-screen h-screen bg-black bg-opacity-20 absolute -top-10 -left-[50%]"
                 >
-                  <ul class="w-56 h-screen bg-rose-500 text-gray-content p-2 rounded-r-lg pt-28 z-10">
-                    <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
+                  <ul className="w-56 h-screen bg-rose-500 text-gray-content p-2 rounded-r-lg pt-28 z-10">
+                    <li className="sm:hidden block p-4 rounded-lg mb-6">
                       <HeaderSerach />
                     </li>
                     <Link to={`/home`}>
@@ -105,13 +109,13 @@ const Header = () => {
                   </div>
                 </div>
               </label>
-              {/* <label tabindex="0" class="btn btn-ghost">
-              <AiOutlineMenu className="text-white text-3xl" />
-            </label> */}
             </div>
             <Link to={`/home`}>
               <h1 className="text-4xl font-bold text-white">Thanks to</h1>
             </Link>
+            <div className="sm:block hidden">
+              <HeaderSerach />
+            </div>
           </div>
         </div>
       ) : (

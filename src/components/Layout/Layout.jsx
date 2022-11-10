@@ -5,13 +5,17 @@ import { useMediaQuery } from "react-responsive";
 
 const Layout = ({ children }) => {
   // media-query
+  const tablet = useMediaQuery({
+    query: "(max-width:1023px)",
+  });
+
   const mobile = useMediaQuery({
     query: "(max-width:639px)",
   });
 
   return (
     <>
-      {mobile ? (
+      {mobile || tablet ? (
         <div>
           <Header />
           <div className="w-[90%] m-auto pt-28 pb-8">

@@ -29,6 +29,10 @@ const Main = () => {
   }, []);
 
   // media-query
+  const tablet = useMediaQuery({
+    query: "(max-width:1023px)",
+  });
+
   const mobile = useMediaQuery({
     query: "(max-width:639px)",
   });
@@ -46,16 +50,21 @@ const Main = () => {
 
   return (
     <Layout>
-      {mobile ? (
+      {mobile || tablet ? (
         <div>
-          <div className="bg-white rounded-lg mb-5">
-            <MainProfile />
-          </div>
-          <div className="bg-white rounded-lg mb-5">
-            <MainCalendar />
+          <div className="block sm:flex sm:justify-between">
+            <div className="sm:w-[48%] bg-white rounded-lg mb-5">
+              <MainProfile />
+            </div>
+            <div className="sm:w-[48%] bg-white rounded-lg mb-5">
+              <MainCalendar />
+            </div>
           </div>
           <div className="bg-white rounded-lg mb-5">
             <MainLifeQuotes />
+          </div>
+          <div className="hidden sm:block bg-white rounded-lg p-7 mb-5">
+            <MainGraph />
           </div>
           <div className="bg-white rounded-lg p-7 overflow-y-scroll scrollbar-hide">
             <MainList />
