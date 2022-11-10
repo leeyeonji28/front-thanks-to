@@ -88,8 +88,8 @@ const MainGraph = () => {
 
   return (
     <div className="app">
-      <h3>
-        <b className="text-xl">{userInfo.nickName}</b>
+      <h3 className="sm:text-base text-xl">
+        <b className="sm:text-xl text-2xl">{userInfo.nickName}</b>
         님! 한 해의 감사지수를 그래프로 확인해 보세요 😊
       </h3>
       <div className="row">

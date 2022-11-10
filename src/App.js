@@ -3,8 +3,6 @@ import Main from "./routes/Main";
 import Info from "./routes/Info";
 import Login from "./routes/Login";
 import Join from "./routes/Join";
-import { useRecoilState } from "recoil";
-import { loginState } from "./recoil/loginState";
 import Post from "./routes/Post";
 import HotPost from "./routes/HotPost";
 import MyPage from "./routes/MyPage";
@@ -12,12 +10,8 @@ import MyPageModify from "./routes/MyPageModify";
 import PostSearch from "./routes/PostSearch";
 
 function App() {
-  const access = useRecoilState(loginState);
-  // const [loginOn, setloginOn] = useRecoilState(loginState);
-  // const [user, setUser] = useRecoilState(userState);
-
   return (
-    <div className="relative w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100 overflow-hidden">
+    <div className="relative w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100 overflow-scroll scrollbar-hide">
       <Router>
         <Routes>
           <Route path="/login" element={<Login />}></Route>

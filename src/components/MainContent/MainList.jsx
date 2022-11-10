@@ -60,13 +60,13 @@ const MainList = () => {
   return (
     <div>
       <div>
-        <h3 className="mb-10">
-          <b className="text-xl text-rose-500">Thanks to</b>
+        <h3 className="mb-10 sm:text-base text-xl">
+          <b className="sm:text-xl text-2xl text-rose-500">Thanks to</b>
           <br />
           그동안 감사했던 기록들을 함께 보아요 😊
         </h3>
         {getUserPostData.length == 0 ? (
-          <div className="flex justify-center items-center h-[330px]">
+          <div className="flex justify-center items-center h-[330px] sm:text-base text-xl">
             아직 게시글이 없습니다.
           </div>
         ) : (

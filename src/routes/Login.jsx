@@ -9,7 +9,7 @@ const Login = () => {
   const [userId, setUserId] = useState("");
   const [userPwd, setUserPwd] = useState("");
   const [showPwd, setShowPwd] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const togglePass = (e) => {
     e.preventDefault();
@@ -29,7 +29,6 @@ const Login = () => {
         });
         alert("로그인이 완료되었습니다.");
 
-        // console.log(loginData);
         const jwtToken = loginData.headers.authorization.substring(
           loginData.headers.authorization.indexOf(" ") + 1,
           loginData.headers.authorization.length
@@ -42,7 +41,8 @@ const Login = () => {
 
         localStorage.setItem("Token", jwtToken);
         localStorage.setItem("id", dec.id);
-        navigate("/home");
+        window.location.replace("/home");
+        // navigate("/home");
       } catch (e) {
         console.log(e);
         alert(e);
