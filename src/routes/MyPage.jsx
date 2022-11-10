@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import { CgSpinner } from "react-icons/cg";
 import { url } from "../utile/url";
-import { useRecoilValue } from "recoil";
-import { loginState } from "../recoil/loginState";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { HiChevronDoubleDown } from "react-icons/hi";
 import MyPostBox from "../components/MypageContent/MyPostBox";
 
@@ -15,7 +13,6 @@ const MyPage = () => {
   const [userInfo, setUserInfo] = useState("");
   const [userPostList, setUserPostList] = useState([]);
   const { myId } = useParams();
-  const navigate = useNavigate();
 
   const getUserInfo = async () => {
     try {
@@ -75,7 +72,7 @@ const MyPage = () => {
             </div>
           </div>
           <div className="relative">
-            {userPostList.length == 0 ? (
+            {userPostList.length === 0 ? (
               <div className="flex justify-center items-center sm:w-[758px] sm:h-[730px] mt-7 border">
                 아직 게시글이 없습니다.
               </div>

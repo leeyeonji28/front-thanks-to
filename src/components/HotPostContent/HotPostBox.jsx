@@ -38,8 +38,8 @@ const HotPostBox = ({ postId }) => {
   }, []);
 
   function showModal() {
-    if (hotData.postLock == "true") {
-      if (postUserId == userId) {
+    if (hotData.postLock === "true") {
+      if (postUserId === userId) {
         setModal(!modal);
       } else {
         alert("비밀글은 작성자만 열람 가능합니다.");
@@ -75,7 +75,7 @@ const HotPostBox = ({ postId }) => {
           showModal();
         }}
       >
-        {hotData.postLock == "false" ? (
+        {hotData.postLock === "false" ? (
           <div className="sm:flex w-full">
             {hotData.postImg !== "" ? (
               <div className="flex justify-center items-center sm:w-[800px] w-full overflow-hidden sm:rounded-none rounded-t-lg">

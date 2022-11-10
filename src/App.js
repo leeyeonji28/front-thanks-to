@@ -6,7 +6,6 @@ import Join from "./routes/Join";
 import Post from "./routes/Post";
 import HotPost from "./routes/HotPost";
 import MyPage from "./routes/MyPage";
-import MyPageModify from "./routes/MyPageModify";
 import PostSearch from "./routes/PostSearch";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
           <Route path="/post" element={<Post />}></Route>
           <Route path="/hot_post" element={<HotPost />}></Route>
           <Route path="/mypage/:myId" element={<MyPage />}></Route>
-          <Route path="/mypage/:myId/modify" element={<MyPageModify />}></Route>
           <Route path="/search/:keyword" element={<PostSearch />}></Route>
         </Routes>
       </Router>

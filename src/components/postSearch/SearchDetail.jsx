@@ -52,7 +52,7 @@ const SearchDetail = ({
           >
             ✕
           </div>
-          {userId == postUserId ? (
+          {userId === postUserId ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <FiMoreHorizontal className="text-3xl" />

@@ -65,6 +65,7 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
       alert("포스팅이 완료되었습니다.");
       showModal();
       getUserInfo();
+      window.location.replace("/home");
     } catch (e) {
       alert(e);
     }
@@ -92,7 +93,7 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
   };
 
   const lockCheck = (e) => {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
       setPostValue({
         ...postValue,
         postLock: "true",

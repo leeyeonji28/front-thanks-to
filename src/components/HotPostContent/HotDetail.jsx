@@ -59,7 +59,7 @@ const HotDetail = ({
           >
             ✕
           </div>
-          {userId == postUserId ? (
+          {userId === postUserId ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <FiMoreHorizontal className="text-3xl" />
@@ -120,7 +120,7 @@ const HotDetail = ({
                 <div>
                   <b className="block text-xl">{userNick}</b>
                   <span className="text-gray-500">{postDate}</span>
-                  {postLock == "true" ? (
+                  {postLock === "true" ? (
                     <HiLockClosed className="inline-block ml-2" />
                   ) : (
                     ""
@@ -196,7 +196,7 @@ const HotDetail = ({
           )}
           {modify === true ? (
             <div>
-              {lockValue == "true" ? (
+              {lockValue === "true" ? (
                 <div>
                   <label htmlFor="lock" className="cursor-pointer">
                     <div className="text-right">

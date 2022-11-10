@@ -57,7 +57,7 @@ const Post = () => {
 
   return (
     <Layout>
-      {getPostData.length == 0 ? (
+      {getPostData.length === 0 ? (
         <div className="flex justify-center items-center w-[1170px] h-[855px] rounded-lg bg-white">
           아직 게시글이 없습니다.
         </div>

@@ -6,7 +6,6 @@ import { url } from "../../utile/url";
 import CreateModal from "../PostContent/CreateModal";
 import { CgSpinner } from "react-icons/cg";
 import { useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
 
 const MainProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,11 +13,6 @@ const MainProfile = () => {
   const [modal, setModal] = useState(false);
   const [userInfo, setUserInfo] = useState("");
   const userId = useRecoilValue(loginState);
-
-  // media-query
-  const mobile = useMediaQuery({
-    query: "(max-width:639px)",
-  });
 
   const getUserInfo = async () => {
     try {

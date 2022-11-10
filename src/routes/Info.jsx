@@ -5,9 +5,9 @@ import Layout from "../components/Layout/Layout";
 const Info = () => {
   return (
     <Layout>
-      <div className="w-[1170px] h-[855px] bg-white rounded-lg">
+      <div className="sm:w-[1170px] sm:h-[855px] bg-white rounded-lg">
         <div className="p-7 text-center">
-          <div className="flex justify-conter items-center h-[230px] overflow-hidden rounded-lg">
+          <div className="flex justify-conter items-center sm:h-[230px] overflow-hidden rounded-lg">
             <img src={infoBg} alt="" className="opacity-80" />
           </div>
           <h2 className="my-10 font-bold text-5xl">Welcome</h2>
@@ -23,6 +23,7 @@ const Info = () => {
             하루 하루 저희의 일상에 감사하고 모두 행복한 사회가 되길 바라는
             마음에서 시작한 Thank to는 감사일기를 서로 공유하며
             <br />
+            <br />
             서로의 일기에서 <b>당연하다고 생각했던 일상의 감사함</b>을 찾고 또
             그것을 공유하는데 도움이 되고자 합니다.
             <br />
@@ -34,23 +35,25 @@ const Info = () => {
             감사합니다.
           </p>
         </div>
-        <div className="flex justify-between items-center mt-8 p-7 pt-8 border-t-2">
-          <h4 className="text-rose-500 font-bold text-2xl">Thanks to</h4>
-          <ul className="flex">
+        <div className="sm:flex justify-between items-center mt-8 p-7 pt-8 border-t-2">
+          <h4 className="text-rose-500 font-bold text-2xl sm:mb-0 mb-4">
+            Thanks to
+          </h4>
+          <ul className="sm:flex">
             <div>
-              <li className="mr-8">
+              <li className="sm:block flex sm:mr-8 sm:mb-0 mb-2">
                 <b className="inline-block w-14">Add</b>
                 대전광역시 유성구 봉명동 123번지 Thanks to
               </li>
-              <li>
+              <li className="sm:mb-0 mb-2">
                 <b className="inline-block w-14">Mail</b>
                 thanks2@thanksto.com
               </li>
             </div>
             <div>
-              <li>
+              <li className="sm:block flex sm:mb-0 mb-2">
                 <b className="inline-block w-14">Tel</b>
-                042 - 123 - 1234 / 042 - 456 - 4567
+                042 - 123 - 1234
               </li>
               <li>
                 <b className="inline-block w-14">Fax</b>

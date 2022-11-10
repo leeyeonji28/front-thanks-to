@@ -109,7 +109,7 @@ const UserPostDetail = ({
               <div>
                 <b className="block text-xl">{userNick}</b>
                 <span className="text-gray-500">{postDate}</span>
-                {postLock == "true" ? (
+                {postLock === "true" ? (
                   <HiLockClosed className="inline-block ml-2" />
                 ) : (
                   ""
@@ -184,7 +184,7 @@ const UserPostDetail = ({
           )}
           {modify === true ? (
             <div>
-              {lockValue == "true" ? (
+              {lockValue === "true" ? (
                 <div>
                   <label htmlFor="lock" className="cursor-pointer">
                     <div className="text-right">

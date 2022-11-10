@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <div>
       {mobile ? (
-        <div className="fixed w-screen px-4">
+        <div className="fixed w-screen px-4 z-30">
           <div className="flex justify-between items-center mb-5 pt-4">
             <div class="relative">
               <label

@@ -2,14 +2,13 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import base64 from "base-64";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
   const [userPwd, setUserPwd] = useState("");
   const [showPwd, setShowPwd] = useState(false);
-  // const navigate = useNavigate();
 
   const togglePass = (e) => {
     e.preventDefault();
@@ -42,7 +41,6 @@ const Login = () => {
         localStorage.setItem("Token", jwtToken);
         localStorage.setItem("id", dec.id);
         window.location.replace("/home");
-        // navigate("/home");
       } catch (e) {
         console.log(e);
         alert(e);

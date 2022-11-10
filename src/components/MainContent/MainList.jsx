@@ -13,7 +13,6 @@ const MainList = () => {
   const [error, setError] = useState("");
   const [getUserPostData, setGetUserPostData] = useState([]);
   const userId = useRecoilValue(loginState);
-  const [userInfo, setUserInfo] = useState("");
   const [listLenght, setListLenght] = useState();
   const [userNick, setUserNick] = useState();
   const [userImg, setUserImg] = useState();
@@ -24,7 +23,6 @@ const MainList = () => {
         url: `${url}/api/user/${userId}`,
         method: "GET",
       });
-      setUserInfo(json.data);
       setGetUserPostData(json.data.postList);
       setIsLoading(false);
       setListLenght(json.data.postList.length);
@@ -37,7 +35,9 @@ const MainList = () => {
 
   useEffect(() => {
     getUserPostList();
-  }, [userInfo]);
+  }, []);
+
+  console.log(listLenght);
 
   if (error) {
     return (
@@ -65,7 +65,7 @@ const MainList = () => {
           <br />
           그동안 감사했던 기록들을 함께 보아요 😊
         </h3>
-        {getUserPostData.length == 0 ? (
+        {getUserPostData.length === 0 ? (
           <div className="flex justify-center items-center h-[330px] sm:text-base text-xl">
             아직 게시글이 없습니다.
           </div>
