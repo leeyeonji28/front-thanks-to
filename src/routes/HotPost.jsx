@@ -56,7 +56,7 @@ const HotPost = () => {
           아직 게시글이 없습니다.
         </div>
       ) : (
-        <div>
+        <div className="w-full">
           <div className="2xl:w-[1180px] xl:w-[1080px] 2xl:h-[855px] h-[698px] rounded-lg overflow-y-scroll scrollbar-hide">
             <div>
               {getPostData

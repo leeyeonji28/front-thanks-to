@@ -22,18 +22,18 @@ const MyPostBox = ({
 
   return (
     <div className="group">
-      <div className="lg:flex lg:flex-wrap block">
+      <div className="lg:flex lg:flex-wrap block 2xl:w-[738px] xl:w-[650px] w-full">
         <b className="lg:w-[104px] h-11 mr-5 lg:py-2 lg:px-0 p-2 lg:text-base text-xl text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
           {postDate}
         </b>
         <div
-          className="cursor-pointer"
+          className="w-full cursor-pointer"
           onClick={() => {
             showModal();
           }}
         >
-          <span className="block lg:w-[650px] w-full my-5 border-b-0 border-dashed border-2"></span>
-          <div className="lg:w-[650px] w-full lg:mb-20 mb-10 p-5 rounded-lg bg-gray-50">
+          <span className="block w-full my-5 border-b-0 border-dashed border-2"></span>
+          <div className="w-full lg:mb-20 mb-10 p-5 rounded-lg bg-gray-50">
             <h5 className="mb-2 text-lg font-semibold">{postTitle}</h5>
             <p>{postContent}</p>
           </div>

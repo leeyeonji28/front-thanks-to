@@ -97,16 +97,14 @@ const Header = () => {
                         </p>
                       </li>
                     </Link>
+                    <li
+                      className="group flex items-center p-4 rounded-lg mb-6 bg-rose-600"
+                      onClick={logoutClick}
+                    >
+                      <FiLogOut className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                      <p className="text-white text-xl">LogOut</p>
+                    </li>
                   </ul>
-                  <div
-                    className="group relative w-12 h-12 p-3 text-gray-500 hover:text-rose-500"
-                    onClick={logoutClick}
-                  >
-                    <FiLogOut className="w-6 h-6" />
-                    <span className="absolute hidden top-0 left-12 p-2 bg-white shadow-lg text-gray-800 group-hover:block z-10">
-                      LogOut
-                    </span>
-                  </div>
                 </div>
               </label>
             </div>

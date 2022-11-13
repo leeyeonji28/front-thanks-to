@@ -52,14 +52,14 @@ const MyPage = () => {
 
   return (
     <Layout>
-      <div className="lg:w-[1170px] 2xl:h-[855px] min-h-[698px] bg-white rounded-lg">
+      <div className="2xl:w-[1180px] xl:w-[1080px] w-full 2xl:h-[855px] 2xl:h-[855px] min-h-[698px] bg-white rounded-lg">
         <h3 className="p-7 pb-0 text-2xl font-bold">Profile</h3>
         <div className="lg:flex block">
           <div className="p-7 lg:block sm:flex sm:justify-between sm:items-end sm:mb-10">
-            <div className="lg:w-80 sm:w-[48%] w-full lg:h-80 border shadow-lg rounded-lg overflow-hidden">
+            <div className="xl:w-80 lg:w-60 sm:w-[48%] w-full xl:h-80 lg:h-auto border shadow-lg rounded-lg overflow-hidden">
               <img src={userInfo.profileImg} alt="" className="w-full" />
             </div>
-            <div className="lg:w-80 sm:w-[48%] w-full sm:h-full lg:h-auto border-2 rounded-lg p-4 mt-10 sm:mb-0 mb-10 outline-none">
+            <div className="xl:w-80 lg:w-60 sm:w-[48%] w-full sm:h-full lg:h-auto border-2 rounded-lg p-4 mt-10 sm:mb-0 mb-10 outline-none">
               <p>
                 <b>Your Name</b> : {userInfo.username}
               </p>
@@ -71,7 +71,7 @@ const MyPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative w-full">
             {userPostList.length === 0 ? (
               <div className="flex justify-center items-center lg:w-[758px] lg:h-[730px] mt-7 border">
                 아직 게시글이 없습니다.
@@ -85,7 +85,7 @@ const MyPage = () => {
                     (스크롤을 내리면 더 많은 일기를 볼 수 있습니다!)
                   </span>
                 </p>
-                <div className="lg:h-[655px] p-7 pt-0 lg:overflow-y-scroll lg:scrollbar-hide">
+                <div className="2xl:h-[655px] lg:h-[498px] h-auto p-7 pt-0 lg:overflow-y-scroll lg:scrollbar-hide">
                   {userPostList.reverse().map((list, i) => (
                     <MyPostBox
                       key={i}

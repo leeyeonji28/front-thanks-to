@@ -20,13 +20,13 @@ const HeaderSerach = () => {
           <input
             type="text"
             placeholder="Search…"
-            className="input input-bordered border-0"
+            className="input input-bordered border-0 sm:w-40 w-32"
             value={searchWord}
             onChange={(e) => {
               setSearchWord(e.target.value);
             }}
           />
-          <button className="btn btn-square bg-rose-500 hover:bg-rose-300 border-0">
+          <button className="btn btn-square sm:bg-rose-500 bg-rose-300 hover:bg-rose-300 border-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"

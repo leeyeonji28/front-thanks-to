@@ -76,7 +76,7 @@ const HotPostBox = ({ postId }) => {
         }}
       >
         {hotData.postLock === "false" ? (
-          <div className="sm:flex w-full">
+          <div className="w-full">
             {hotData.postImg !== "" ? (
               <div className="flex justify-center items-center sm:w-[800px] w-full overflow-hidden sm:rounded-none rounded-t-lg">
                 <img src={hotData.postImg} alt="" />
