@@ -54,13 +54,13 @@ const MainProfile = () => {
   }
 
   return (
-    <div className="flex justify-center items-center h-[240px]">
+    <div className="flex justify-center items-center 2xl:h-[240px] h-full lg:py-0 py-5">
       <div className="text-center">
         <div className="w-16 m-auto border shadow-lg rounded-lg overflow-hidden">
           <img src={userInfo.profileImg} alt="" className="h-16" />
         </div>
         <b className="block text-xl mt-5">{userInfo.nickName}</b>
-        <p>{userInfo.userSay}</p>
+        <p className="2xl:xl:sm:block lg:hidden">{userInfo.userSay}</p>
         <div
           onClick={() => {
             showModal();

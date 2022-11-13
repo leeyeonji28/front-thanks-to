@@ -5,9 +5,9 @@ import Layout from "../components/Layout/Layout";
 const Info = () => {
   return (
     <Layout>
-      <div className="sm:w-[1170px] sm:h-[855px] bg-white rounded-lg">
+      <div className="2xl:w-[1180px] xl:w-[1080px] 2xl:h-[855px] lg:h-[698px] h-full bg-white rounded-lg">
         <div className="p-7 text-center">
-          <div className="flex justify-conter items-center sm:h-[230px] overflow-hidden rounded-lg">
+          <div className="flex justify-conter items-center 2xl:xl:h-[230px] lg:h-[0px] h-[230px] overflow-hidden rounded-lg">
             <img src={infoBg} alt="" className="opacity-80" />
           </div>
           <h2 className="my-10 font-bold text-5xl">Welcome</h2>
@@ -35,23 +35,23 @@ const Info = () => {
             감사합니다.
           </p>
         </div>
-        <div className="sm:flex justify-between items-center mt-8 p-7 pt-8 border-t-2">
-          <h4 className="text-rose-500 font-bold text-2xl sm:mb-0 mb-4">
+        <div className="lg:flex justify-between items-center mt-8 p-7 pt-8 border-t-2">
+          <h4 className="text-rose-500 font-bold text-2xl lg:mb-0 mb-4">
             Thanks to
           </h4>
-          <ul className="sm:flex">
+          <ul className="lg:flex">
             <div>
-              <li className="sm:block flex sm:mr-8 sm:mb-0 mb-2">
+              <li className="lg:block flex lg:mr-8 lg:mb-0 mb-2">
                 <b className="inline-block w-14">Add</b>
                 대전광역시 유성구 봉명동 123번지 Thanks to
               </li>
-              <li className="sm:mb-0 mb-2">
+              <li className="lg:mb-0 mb-2">
                 <b className="inline-block w-14">Mail</b>
                 thanks2@thanksto.com
               </li>
             </div>
             <div>
-              <li className="sm:block flex sm:mb-0 mb-2">
+              <li className="lg:block flex lg:mb-0 mb-2">
                 <b className="inline-block w-14">Tel</b>
                 042 - 123 - 1234
               </li>

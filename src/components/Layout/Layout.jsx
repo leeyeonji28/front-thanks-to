@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
           </div>
         </div>
       ) : (
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[1270px] h-[925px] m-auto">
+        <div className="2xl:w-[1280px] xl:w-[1180px] w-[90%] 2xl:h-[925px] h-[768px] h-auto m-auto">
           <Header />
           <div className="flex">
             <SideNav />

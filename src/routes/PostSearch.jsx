@@ -52,7 +52,7 @@ const PostSearch = () => {
   return (
     <Layout>
       {searchList.length === 0 ? (
-        <div className="flex justify-center items-center lg:w-[1170px] h-[855px] rounded-lg bg-white">
+        <div className="flex justify-center items-center w-full 2xl:h-[855px] h-[698px] rounded-lg bg-white">
           검색어에 해당되는 게시글이 없습니다.
         </div>
       ) : (

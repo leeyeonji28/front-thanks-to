@@ -10,7 +10,7 @@ import PostSearch from "./routes/PostSearch";
 
 function App() {
   return (
-    <div className="relative w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100 overflow-scroll scrollbar-hide">
+    <div className="flex w-screen h-screen bg-gradient-to-r from-rose-200 to-rose-100 overflow-scroll scrollbar-hide">
       <Router>
         <Routes>
           <Route path="/login" element={<Login />}></Route>

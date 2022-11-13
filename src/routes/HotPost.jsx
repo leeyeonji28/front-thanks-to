@@ -52,12 +52,12 @@ const HotPost = () => {
   return (
     <Layout>
       {getPostData.length === 0 ? (
-        <div className="flex justify-center items-center w-[1170px] h-[855px] rounded-lg bg-white">
+        <div className="flex justify-center items-center 2xl:w-[1180px] xl:w-[1080px] 2xl:h-[855px] h-[698px] rounded-lg bg-white">
           아직 게시글이 없습니다.
         </div>
       ) : (
         <div>
-          <div className="sm:w-[1170px] sm:h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
+          <div className="2xl:w-[1180px] xl:w-[1080px] 2xl:h-[855px] h-[698px] rounded-lg overflow-y-scroll scrollbar-hide">
             <div>
               {getPostData
                 .slice(listLenght - 30, listLenght)
@@ -67,7 +67,7 @@ const HotPost = () => {
             </div>
           </div>
           {getPostData.length > 3 ? (
-            <div className="sm:block hidden absolute top-[860px] left-[655px] animate-bounce">
+            <div className="lg:block hidden absolute top-[860px] left-[655px] animate-bounce">
               <HiChevronDoubleDown className="text-3xl text-gray-300" />
             </div>
           ) : (

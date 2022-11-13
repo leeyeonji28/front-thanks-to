@@ -52,14 +52,14 @@ const MyPage = () => {
 
   return (
     <Layout>
-      <div className="sm:w-[1170px] sm:h-[855px] bg-white rounded-lg">
+      <div className="lg:w-[1170px] 2xl:h-[855px] min-h-[698px] bg-white rounded-lg">
         <h3 className="p-7 pb-0 text-2xl font-bold">Profile</h3>
-        <div className="sm:flex block">
-          <div className="p-7">
-            <div className="sm:w-80 sm:h-80 border shadow-lg rounded-lg overflow-hidden">
-              <img src={userInfo.profileImg} alt="" className="h-80" />
+        <div className="lg:flex block">
+          <div className="p-7 lg:block sm:flex sm:justify-between sm:items-end sm:mb-10">
+            <div className="lg:w-80 sm:w-[48%] w-full lg:h-80 border shadow-lg rounded-lg overflow-hidden">
+              <img src={userInfo.profileImg} alt="" className="w-full" />
             </div>
-            <div className="sm:w-80 border-2 rounded-lg p-4 mt-10 mb-10 outline-none">
+            <div className="lg:w-80 sm:w-[48%] w-full sm:h-full lg:h-auto border-2 rounded-lg p-4 mt-10 sm:mb-0 mb-10 outline-none">
               <p>
                 <b>Your Name</b> : {userInfo.username}
               </p>
@@ -73,19 +73,19 @@ const MyPage = () => {
           </div>
           <div className="relative">
             {userPostList.length === 0 ? (
-              <div className="flex justify-center items-center sm:w-[758px] sm:h-[730px] mt-7 border">
+              <div className="flex justify-center items-center lg:w-[758px] lg:h-[730px] mt-7 border">
                 아직 게시글이 없습니다.
               </div>
             ) : (
               <div>
-                <p className="sm:pt-7 pt-0 pl-7 mb-7 sm:text-lg text-xl">
+                <p className="lg:pt-7 pt-0 pl-7 mb-7 lg:text-lg text-xl">
                   {userInfo.username}님의 일기를 확인해 보아요.
                   <br />
-                  <span className="text-base sm:block hidden">
+                  <span className="text-base lg:block hidden">
                     (스크롤을 내리면 더 많은 일기를 볼 수 있습니다!)
                   </span>
                 </p>
-                <div className="sm:h-[655px] p-7 pt-0 sm:overflow-y-scroll sm:scrollbar-hide">
+                <div className="lg:h-[655px] p-7 pt-0 lg:overflow-y-scroll lg:scrollbar-hide">
                   {userPostList.reverse().map((list, i) => (
                     <MyPostBox
                       key={i}
@@ -103,7 +103,7 @@ const MyPage = () => {
                     />
                   ))}
                 </div>
-                <div className="absolute sm:block hidden top-[720px] left-[390px] animate-bounce">
+                <div className="absolute lg:block hidden top-[720px] left-[390px] animate-bounce">
                   <HiChevronDoubleDown className="text-3xl text-gray-300" />
                 </div>
               </div>

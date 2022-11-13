@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
 import { CgSpinner } from "react-icons/cg";
 import { url } from "../../utile/url";
+import { useRef } from "react";
 
 const MainGraph = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,6 +13,8 @@ const MainGraph = () => {
   const [userInfo, setUserInfo] = useState([]);
   const [countData, setCountData] = useState([]);
   const userId = useRecoilValue(loginState);
+  const browserRef = useRef(0);
+  const [graphBox, setGraphBox] = useState(null);
 
   const getUserInfo = async () => {
     try {
@@ -25,6 +28,10 @@ const MainGraph = () => {
     } catch (e) {
       setError(e);
     }
+  };
+
+  const boxWidth = () => {
+    setGraphBox(browserRef.current.offsetWidth);
   };
 
   const counter = (userInfo) => {
@@ -44,7 +51,8 @@ const MainGraph = () => {
 
   useEffect(() => {
     getUserInfo();
-  }, []);
+    boxWidth();
+  }, [browserRef]);
 
   const options = {
     chart: {
@@ -87,7 +95,7 @@ const MainGraph = () => {
   }
 
   return (
-    <div className="app">
+    <div className="app" ref={browserRef}>
       <h3 className="sm:text-base text-xl">
         <b className="sm:text-xl text-2xl">{userInfo.nickName}</b>
         님! 한 해의 감사지수를 그래프로 확인해 보세요 😊
@@ -98,7 +106,7 @@ const MainGraph = () => {
             options={options}
             series={options.series}
             type="area"
-            width="774"
+            width={graphBox}
             height="236"
           />
         </div>

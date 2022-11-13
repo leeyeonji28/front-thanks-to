@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <div>
       {mobile || tablet ? (
-        <div className="fixed w-screen px-4 z-30">
+        <div className="fixed w-screen px-4 z-30 bg-rose-300 bg-opacity-50">
           <div className="flex justify-between items-center mb-5 pt-4">
             <div className="relative">
               <label

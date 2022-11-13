@@ -48,7 +48,7 @@ const PostDetail = ({
   return (
     <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20">
       {/* 모달 이너 */}
-      <div className="modal-box relative max-w-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden p-10 pt-14">
+      <div className="modal-box relative lg:max-w-3xl sm:max-w-2xl w-1/2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden p-10 pt-14">
         <div className="w-full flex justify-between items-center absolute left-0 top-2 px-2">
           <div
             onClick={() => {

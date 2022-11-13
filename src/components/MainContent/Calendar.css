@@ -1,5 +1,5 @@
 .react-calendar {
-  min-width: 264px;
+  /* min-width: 264px; */
   max-width: 100%;
   background: white;
   line-height: 1.2em;
@@ -57,7 +57,7 @@
 }
 .react-calendar__month-view__weekdays__weekday {
   padding: 0.5em 0;
-  font-size: 3px;
+  font-size: 0px;
 }
 .react-calendar__month-view__weekdays__weekday abbr {
   text-decoration: none;

@@ -15,7 +15,7 @@ const SideNav = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between w-20 h-[855px] rounded-lg p-4 mr-5 bg-white">
+    <div className="flex flex-col justify-between w-20 2xl:h-[855px] h-[698px] rounded-lg p-4 mr-5 bg-white">
       <ul>
         <Link to={`/home`}>
           <li className="group relative w-12 h-12 p-3 rounded-lg text-gray-300 mb-6 hover:text-rose-500">

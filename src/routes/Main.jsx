@@ -71,19 +71,16 @@ const Main = () => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-[830px_320px] gap-5 w-[1170px] h-[855px]">
-          <div className="grid grid-rows-[310px_525px] gap-5">
+        <div className="grid grid-cols-[68%_30%] gap-5 2xl:w-[1180px] xl:w-[1080px] 2xl:h-[855px] h-[698px]">
+          <div className="grid 2xl:grid-rows-[310px_525px] grid-rows-[310px_368px] gap-5">
             <div className="bg-white rounded-lg p-7">
               <MainGraph />
             </div>
             <div className=" bg-white rounded-lg p-7 overflow-y-scroll scrollbar-hide">
               <MainList />
-              <div className="absolute top-[860px] left-[500px] animate-bounce">
-                <HiChevronDoubleDown className="text-3xl text-gray-300" />
-              </div>
             </div>
           </div>
-          <div className="grid grid-rows-[240px_350px_225px] gap-5">
+          <div className="grid 2xl:grid-rows-[240px_350px_225px] grid-rows-[200px_300px_158px] gap-5">
             <div className="bg-white rounded-lg">
               <MainProfile />
             </div>

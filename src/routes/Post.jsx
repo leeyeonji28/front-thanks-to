@@ -33,6 +33,10 @@ const Post = () => {
   }, []);
 
   // media-query
+  const tablet = useMediaQuery({
+    query: "(max-width:1023px)",
+  });
+
   const mobile = useMediaQuery({
     query: "(max-width:639px)",
   });
@@ -62,7 +66,7 @@ const Post = () => {
           아직 게시글이 없습니다.
         </div>
       ) : (
-        <div>
+        <div className="w-full">
           {mobile ? (
             <div className="rounded-lg">
               <div>
@@ -73,21 +77,35 @@ const Post = () => {
             </div>
           ) : (
             <div>
-              <div className="w-[1170px] h-[855px] rounded-lg overflow-y-scroll scrollbar-hide">
-                <div>
-                  <Masonry breakpointCols={3} className="flex gap-5">
-                    {getPostData.map((data, index) => (
-                      <PostBox key={index} postId={data.id} />
-                    ))}
-                  </Masonry>
-                </div>
-              </div>
-              {getPostData.length > 3 ? (
-                <div className="absolute top-[860px] left-[655px] animate-bounce">
-                  <HiChevronDoubleDown className="text-3xl text-gray-300" />
+              {tablet ? (
+                <div className="w-full rounded-lg">
+                  <div>
+                    <Masonry breakpointCols={2} className="flex gap-5">
+                      {getPostData.map((data, index) => (
+                        <PostBox key={index} postId={data.id} />
+                      ))}
+                    </Masonry>
+                  </div>
                 </div>
               ) : (
-                ""
+                <div>
+                  <div className="2xl:w-[1180px] xl:w-[1080px] 2xl:h-[855px] h-[698px] rounded-lg overflow-y-scroll scrollbar-hide">
+                    <div>
+                      <Masonry breakpointCols={3} className="flex gap-5">
+                        {getPostData.map((data, index) => (
+                          <PostBox key={index} postId={data.id} />
+                        ))}
+                      </Masonry>
+                    </div>
+                  </div>
+                  {getPostData.length > 3 ? (
+                    <div className="absolute top-[860px] left-[655px] animate-bounce">
+                      <HiChevronDoubleDown className="text-3xl text-gray-300" />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
               )}
             </div>
           )}

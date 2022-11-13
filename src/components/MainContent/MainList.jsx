@@ -61,7 +61,8 @@ const MainList = () => {
         <h3 className="mb-10 sm:text-base text-xl">
           <b className="sm:text-xl text-2xl text-rose-500">Thanks to</b>
           <br />
-          그동안 감사했던 기록들을 함께 보아요 😊
+          그동안 감사했던 기록들을 함께 보아요 😊 &nbsp; (스크롤을 내려서 더
+          많은 일기를 확인해보세요.)
         </h3>
         {getUserPostData.length === 0 ? (
           <div className="flex justify-center items-center h-[330px] sm:text-base text-xl">
