@@ -30,7 +30,7 @@ const MyPage = () => {
 
   useEffect(() => {
     getUserInfo();
-  }, []);
+  });
 
   if (error) {
     return (
@@ -71,9 +71,9 @@ const MyPage = () => {
               </p>
             </div>
           </div>
-          <div className="relative w-full">
+          <div className="relative w-full md:px-7 md:pb-7">
             {userPostList.length === 0 ? (
-              <div className="flex justify-center items-center lg:w-[758px] lg:h-[730px] mt-7 border">
+              <div className="flex justify-center items-center w-full min-h-[400px] mt-7 border">
                 아직 게시글이 없습니다.
               </div>
             ) : (

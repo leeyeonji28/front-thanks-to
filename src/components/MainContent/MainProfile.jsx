@@ -33,7 +33,7 @@ const MainProfile = () => {
 
   useEffect(() => {
     getUserInfo();
-  }, []);
+  });
 
   if (error) {
     return (

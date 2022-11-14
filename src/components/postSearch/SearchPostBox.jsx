@@ -32,7 +32,7 @@ const SearchPostBox = ({ postId }) => {
 
   useEffect(() => {
     getSearchPostList();
-  }, []);
+  });
 
   function showModal() {
     setModal(!modal);

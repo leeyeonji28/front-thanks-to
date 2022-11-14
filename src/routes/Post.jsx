@@ -30,7 +30,7 @@ const Post = () => {
 
   useEffect(() => {
     getPostList();
-  }, []);
+  });
 
   // media-query
   const tablet = useMediaQuery({
@@ -62,7 +62,7 @@ const Post = () => {
   return (
     <Layout>
       {getPostData.length === 0 ? (
-        <div className="flex justify-center items-center w-[1170px] h-[855px] rounded-lg bg-white">
+        <div className="flex justify-center items-center 2xl:w-[1180px] xl:w-[1080px] w-full 2xl:h-[855px] h-[698px] rounded-lg bg-white">
           아직 게시글이 없습니다.
         </div>
       ) : (

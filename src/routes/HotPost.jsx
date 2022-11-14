@@ -29,7 +29,7 @@ const HotPost = () => {
 
   useEffect(() => {
     getPostList();
-  }, []);
+  });
 
   if (error) {
     return (

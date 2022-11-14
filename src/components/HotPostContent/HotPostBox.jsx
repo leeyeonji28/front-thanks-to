@@ -35,7 +35,7 @@ const HotPostBox = ({ postId }) => {
 
   useEffect(() => {
     getHotPostList();
-  }, []);
+  });
 
   function showModal() {
     if (hotData.postLock === "true") {

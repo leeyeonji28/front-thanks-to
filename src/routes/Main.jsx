@@ -3,7 +3,6 @@ import MainCalendar from "../components/MainContent/MainCalendar";
 import MainGraph from "../components/MainContent/MainGraph";
 import MainList from "../components/MainContent/MainList";
 import MainProfile from "../components/MainContent/MainProfile";
-import { HiChevronDoubleDown } from "react-icons/hi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -26,7 +25,7 @@ const Main = () => {
       alert("로그인 후 이용해주세요.");
       navigate("/login");
     }
-  }, []);
+  }, [access, navigate]);
 
   // media-query
   const tablet = useMediaQuery({
@@ -76,7 +75,7 @@ const Main = () => {
             <div className="bg-white rounded-lg p-7">
               <MainGraph />
             </div>
-            <div className=" bg-white rounded-lg p-7 overflow-y-scroll scrollbar-hide">
+            <div className="bg-white rounded-lg p-7 overflow-y-scroll scrollbar-hide">
               <MainList />
             </div>
           </div>

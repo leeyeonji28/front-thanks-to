@@ -35,7 +35,7 @@ const MainList = () => {
 
   useEffect(() => {
     getUserPostList();
-  }, []);
+  });
 
   if (error) {
     return (
@@ -65,7 +65,7 @@ const MainList = () => {
           많은 일기를 확인해보세요.)
         </h3>
         {getUserPostData.length === 0 ? (
-          <div className="flex justify-center items-center h-[330px] sm:text-base text-xl">
+          <div className="flex justify-center items-center 2xl:h-[330px] h-[220px] sm:text-base text-xl">
             아직 게시글이 없습니다.
           </div>
         ) : (
