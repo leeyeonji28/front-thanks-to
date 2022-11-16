@@ -100,9 +100,9 @@ const Join = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
-      <div className="py-12 px-28 text-center bg-white rounded-lg">
-        <h1 className="mb-14 text-5xl text-rose-500 font-bold">
+    <div className="flex m-auto w-full h-full">
+      <div className="2xl:w-[574px] w-[350px] 2xl:py-12 2xl:px-28 p-10 m-auto text-center bg-white rounded-lg">
+        <h1 className="2xl:mb-14 mb-7 2xl:text-5xl text-3xl text-rose-500 font-bold">
           Create Account
         </h1>
         <form
@@ -115,7 +115,7 @@ const Join = () => {
           <input
             type="text"
             placeholder="Id"
-            className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+            className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
             onChange={(e) => {
               setJoinData({
                 ...joinData,
@@ -127,7 +127,7 @@ const Join = () => {
             <input
               type={showPwd ? "text" : "Password"}
               placeholder="Password"
-              className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+              className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
               onChange={(e) => {
                 setJoinData({
                   ...joinData,
@@ -151,7 +151,7 @@ const Join = () => {
             type="text"
             placeholder="Nick Name"
             maxLength={6}
-            className="block w-[350px] p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
+            className="block w-full p-4 mb-4 rounded-lg border border-gray-300 outline-rose-500"
             onChange={(e) => {
               setJoinData({
                 ...joinData,
@@ -160,7 +160,7 @@ const Join = () => {
             }}
           />
           <div className="relative">
-            <div className="flex justify-center items-center w-full h-44 mb-4 border border-gray-300 rounded-lg cursor-pointer z-10">
+            <div className="flex justify-center items-center w-full 2xl:h-44 h-32 mb-4 border border-gray-300 rounded-lg cursor-pointer z-10">
               <div>
                 <p className="text-gray-400">Image</p>
               </div>
@@ -188,7 +188,7 @@ const Join = () => {
             <div
               className={
                 imageSrc
-                  ? "absolute top-0 w-[350px] h-44 rounded-lg bg-white overflow-hidden"
+                  ? "absolute top-0 w-full h-44 rounded-lg bg-white overflow-hidden"
                   : "hidden"
               }
             >
@@ -201,7 +201,7 @@ const Join = () => {
           </div>
           <textarea
             placeholder="About you"
-            className="block w-[350px] p-4 mb-12 rounded-lg border border-gray-300 outline-rose-500"
+            className="block w-full p-4 2xl:mb-12 mb-7 rounded-lg border border-gray-300 outline-rose-500"
             maxLength={20}
             onChange={(e) => {
               setJoinData({
@@ -210,7 +210,7 @@ const Join = () => {
               });
             }}
           />
-          <button className="w-[350px] p-4 bg-rose-500 text-white rounded-lg ">
+          <button className="w-full p-4 bg-rose-500 text-white rounded-lg ">
             Join
           </button>
         </form>

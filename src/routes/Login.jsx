@@ -53,9 +53,11 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
-      <div className="w-[350px] text-center">
-        <h1 className="mb-14 text-5xl text-white font-bold">Login</h1>
+    <div className="flex m-auto w-full h-full">
+      <div className="w-[350px] 2xl:p-0 p-8 m-auto text-center">
+        <h1 className="2xl:mb-14 mb-10 2xl:text-5xl text-4xl text-white font-bold">
+          Login
+        </h1>
         <form
           onSubmit={(e) => {
             e.preventDefault();
