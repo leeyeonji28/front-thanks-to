@@ -160,7 +160,7 @@ const Join = () => {
             }}
           />
           <div className="relative">
-            <div className="flex justify-center items-center w-full 2xl:h-44 h-32 mb-4 border border-gray-300 rounded-lg cursor-pointer z-10">
+            <div className="flex justify-center items-center w-full h-44 mb-4 border border-gray-300 rounded-lg cursor-pointer z-10">
               <div>
                 <p className="text-gray-400">Image</p>
               </div>
