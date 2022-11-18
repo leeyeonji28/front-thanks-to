@@ -35,7 +35,7 @@ const MainList = () => {
 
   useEffect(() => {
     getUserPostList();
-  });
+  }, []);
 
   if (error) {
     return (

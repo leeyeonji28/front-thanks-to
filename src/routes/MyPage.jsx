@@ -30,7 +30,7 @@ const MyPage = () => {
 
   useEffect(() => {
     getUserInfo();
-  });
+  }, []);
 
   if (error) {
     return (
@@ -103,7 +103,7 @@ const MyPage = () => {
                     />
                   ))}
                 </div>
-                <div className="absolute lg:block hidden top-[720px] left-[390px] animate-bounce">
+                <div className="absolute 2xl:block hidden top-[720px] left-[390px] animate-bounce">
                   <HiChevronDoubleDown className="text-3xl text-gray-300" />
                 </div>
               </div>

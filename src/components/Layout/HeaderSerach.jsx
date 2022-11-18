@@ -1,11 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { searchState } from "../../recoil/searchState";
 
 const HeaderSerach = () => {
   const navigate = useNavigate();
-  const [searchWord, setSearchWord] = useRecoilState(searchState);
+  const [searchWord, setSearchWord] = useState("");
+
+  const searchCheck = () => {
+    if (searchWord !== "") {
+      navigate(`/search/${searchWord}`);
+    } else {
+      alert("검색어를 입력해 주세요.");
+    }
+  };
 
   return (
     <div>
@@ -14,7 +21,7 @@ const HeaderSerach = () => {
           className="input-group"
           onSubmit={(e) => {
             // e.preventDefault();
-            navigate(`/search/${searchWord}`);
+            searchCheck();
           }}
         >
           <input

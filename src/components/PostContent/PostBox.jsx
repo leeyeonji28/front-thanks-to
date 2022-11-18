@@ -35,7 +35,7 @@ const PostBox = ({ postId }) => {
 
   useEffect(() => {
     getPostList();
-  });
+  }, []);
 
   function showModal() {
     if (postData.postLock === "true") {

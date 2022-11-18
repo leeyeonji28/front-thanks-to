@@ -51,7 +51,7 @@ const MainGraph = () => {
 
   useEffect(() => {
     getUserInfo();
-  });
+  }, []);
 
   useEffect(() => {
     boxWidth();

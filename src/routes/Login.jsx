@@ -4,6 +4,7 @@ import axios from "axios";
 import base64 from "base-64";
 import { Link } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { url } from "../utile/url";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -15,16 +16,24 @@ const Login = () => {
     setShowPwd(!showPwd);
   };
 
+  let headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Accept", "application/json");
+
+  headers.append("Access-Control-Allow-Origin", "https://daily.thanks-to.site");
+  headers.append("Access-Control-Allow-Credentials", "true");
+
   const login = async (res) => {
     if (userId !== "" && userPwd !== "") {
       try {
         const loginData = await axios({
-          url: "/login",
+          url: `${url}/login`,
           method: "POST",
           data: {
             username: userId,
             password: userPwd,
           },
+          headers: headers,
         });
         alert("로그인이 완료되었습니다.");
 
@@ -40,7 +49,7 @@ const Login = () => {
 
         localStorage.setItem("Token", jwtToken);
         localStorage.setItem("id", dec.id);
-        window.location.replace("/home");
+        window.location.replace("/");
       } catch (e) {
         console.log(e);
         alert(e);

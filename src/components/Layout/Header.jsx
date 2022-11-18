@@ -33,82 +33,87 @@ const Header = () => {
   return (
     <div>
       {mobile || tablet ? (
-        <div className="fixed w-screen px-4 z-30 bg-rose-300 bg-opacity-50">
+        <div className="fixed w-screen px-4 z-20 bg-rose-300 bg-opacity-50">
           <div className="flex justify-between items-center mb-5 pt-4">
-            <div className="relative">
-              <label
-                tabIndex="0"
-                className="flex flex-col justify-between w-8 h-6"
-              >
-                <input
-                  type="checkbox"
-                  name="menu_inner"
-                  id="icon"
-                  className="hidden peer"
-                ></input>
-                <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
-                <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
-                <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
-                <div
+            <div className="flex items-center">
+              <div className="relative mr-7">
+                <label
                   tabIndex="0"
-                  className="peer-checked:block hidden w-screen h-screen bg-black bg-opacity-20 absolute -top-10 -left-[50%]"
+                  className="flex flex-col justify-between w-8 h-6"
                 >
-                  <ul className="w-56 h-screen bg-rose-500 text-gray-content p-2 rounded-r-lg pt-28 z-10">
-                    <li className="sm:hidden block p-4 rounded-lg mb-6">
-                      <HeaderSerach />
-                    </li>
-                    <Link to={`/home`}>
-                      <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
-                        <AiFillHome className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
-                        <p className="text-white group-hover:text-rose-500 text-xl">
-                          Home
-                        </p>
+                  <input
+                    type="checkbox"
+                    name="menu_inner"
+                    id="icon"
+                    className="hidden peer"
+                  ></input>
+                  <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
+                  <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
+                  <span className="block w-8 h-1 rounded-lg bg-white z-20"></span>
+                  <div
+                    tabIndex="0"
+                    className="peer-checked:block hidden w-screen h-screen bg-black bg-opacity-20 absolute -top-10 -left-[50%]"
+                  >
+                    <ul className="w-56 h-screen bg-rose-500 text-gray-content p-2 rounded-r-lg pt-28 z-10">
+                      <li className="sm:hidden block p-4 rounded-lg mb-6">
+                        <HeaderSerach />
                       </li>
-                    </Link>
-                    <Link to={`/mypage/${userId}`}>
-                      <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
-                        <FaUser className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
-                        <p className="text-white group-hover:text-rose-500 text-xl">
-                          My Page
-                        </p>
+                      <Link to={`/`}>
+                        <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
+                          <AiFillHome className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                          <p className="text-white group-hover:text-rose-500 text-xl">
+                            Home
+                          </p>
+                        </li>
+                      </Link>
+                      <Link to={`/mypage/${userId}`}>
+                        <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
+                          <FaUser className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                          <p className="text-white group-hover:text-rose-500 text-xl">
+                            My Page
+                          </p>
+                        </li>
+                      </Link>
+                      <Link to={`/post`}>
+                        <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
+                          <AiFillAppstore className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                          <p className="text-white group-hover:text-rose-500 text-xl">
+                            Post
+                          </p>
+                        </li>
+                      </Link>
+                      <Link to={`/hot_post`}>
+                        <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
+                          <FaHeart className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                          <p className="text-white group-hover:text-rose-500 text-xl">
+                            Hot_Post
+                          </p>
+                        </li>
+                      </Link>
+                      <Link to={`/info`}>
+                        <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
+                          <FaInfoCircle className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                          <p className="text-white group-hover:text-rose-500 text-xl">
+                            About
+                          </p>
+                        </li>
+                      </Link>
+                      <li
+                        className="group flex items-center p-4 rounded-lg mb-6 bg-rose-600"
+                        onClick={logoutClick}
+                      >
+                        <FiLogOut className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
+                        <p className="text-white text-xl">LogOut</p>
                       </li>
-                    </Link>
-                    <Link to={`/post`}>
-                      <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
-                        <AiFillAppstore className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
-                        <p className="text-white group-hover:text-rose-500 text-xl">
-                          Post
-                        </p>
-                      </li>
-                    </Link>
-                    <Link to={`/hot_post`}>
-                      <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
-                        <FaHeart className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
-                        <p className="text-white group-hover:text-rose-500 text-xl">
-                          Hot_Post
-                        </p>
-                      </li>
-                    </Link>
-                    <Link to={`/info`}>
-                      <li className="group flex items-center p-4 rounded-lg mb-6 hover:bg-white">
-                        <FaInfoCircle className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
-                        <p className="text-white group-hover:text-rose-500 text-xl">
-                          About
-                        </p>
-                      </li>
-                    </Link>
-                    <li
-                      className="group flex items-center p-4 rounded-lg mb-6 bg-rose-600"
-                      onClick={logoutClick}
-                    >
-                      <FiLogOut className="w-6 h-6 mr-4 text-white group-hover:text-rose-500" />
-                      <p className="text-white text-xl">LogOut</p>
-                    </li>
-                  </ul>
-                </div>
-              </label>
+                    </ul>
+                  </div>
+                </label>
+              </div>
+              <Link to={`/`} className="sm:block hidden">
+                <h1 className="text-4xl font-bold text-white">Thanks to</h1>
+              </Link>
             </div>
-            <Link to={`/home`}>
+            <Link to={`/`} className="sm:hidden block">
               <h1 className="text-4xl font-bold text-white">Thanks to</h1>
             </Link>
             <div className="sm:block hidden">
@@ -118,7 +123,7 @@ const Header = () => {
         </div>
       ) : (
         <div className="flex justify-between mb-5">
-          <Link to={`/home`}>
+          <Link to={`/`}>
             <h1 className="text-4xl font-bold text-white">Thanks to</h1>
           </Link>
           <ul className="flex">

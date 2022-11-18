@@ -59,13 +59,13 @@ const SearchPostBox = ({ postId }) => {
   return (
     <div>
       <div
-        className="flex w-full h-[270px] rounded-lg bg-white mb-5 cursor-pointer"
+        className="sm:flex w-full sm:h-[270px] rounded-lg bg-white mb-5 cursor-pointer"
         onClick={() => {
           showModal();
         }}
       >
         {searchData.postImg !== "" ? (
-          <div className="flex justify-center items-center w-[800px] overflow-hidden">
+          <div className="flex justify-center items-center sm:w-[600px] w-full overflow-hidden">
             <img src={searchData.postImg} alt="" />
           </div>
         ) : (
@@ -74,7 +74,7 @@ const SearchPostBox = ({ postId }) => {
         <div className="w-full">
           <div className="p-3">
             <b className="block mb-3 text-xl">{searchData.postTitle}</b>
-            <p className="h-28">
+            <p className="sm:h-[7.5rem]">
               {searchData.postContent.length > 300
                 ? `${searchData.postContent.slice(0, 300)}...`
                 : searchData.postContent}

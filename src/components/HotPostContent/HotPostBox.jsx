@@ -35,7 +35,7 @@ const HotPostBox = ({ postId }) => {
 
   useEffect(() => {
     getHotPostList();
-  });
+  }, []);
 
   function showModal() {
     if (hotData.postLock === "true") {
@@ -76,9 +76,9 @@ const HotPostBox = ({ postId }) => {
         }}
       >
         {hotData.postLock === "false" ? (
-          <div className="w-full">
+          <div className="w-full sm:flex">
             {hotData.postImg !== "" ? (
-              <div className="flex justify-center items-center sm:w-[800px] w-full overflow-hidden sm:rounded-none rounded-t-lg">
+              <div className="flex justify-center items-center sm:w-[600px] w-full overflow-hidden sm:rounded-none rounded-t-lg">
                 <img src={hotData.postImg} alt="" />
               </div>
             ) : (
@@ -87,7 +87,7 @@ const HotPostBox = ({ postId }) => {
             <div className="w-full">
               <div className="p-3">
                 <b className="block mb-3 text-xl">{hotData.postTitle}</b>
-                <p className="sm:h-28">
+                <p className="sm:h-[7.5rem]">
                   {hotData.postContent.length > 300
                     ? `${hotData.postContent.slice(0, 300)}...`
                     : hotData.postContent}

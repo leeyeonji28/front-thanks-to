@@ -30,7 +30,7 @@ const Post = () => {
 
   useEffect(() => {
     getPostList();
-  });
+  }, []);
 
   // media-query
   const tablet = useMediaQuery({

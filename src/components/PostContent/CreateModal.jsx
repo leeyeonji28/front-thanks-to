@@ -65,7 +65,7 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
       alert("포스팅이 완료되었습니다.");
       showModal();
       getUserInfo();
-      window.location.replace("/home");
+      window.location.replace("/");
     } catch (e) {
       alert(e);
     }
@@ -109,9 +109,9 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
   };
 
   return (
-    <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20">
+    <div className="fixed w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-20 z-40">
       {/* 모달 이너 */}
-      <div className="modal-box relative max-w-xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden">
+      <div className="modal-box relative md:max-w-xl sm:max-w-md max-w-sm top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:overflow-hidden overflow-y-scroll">
         <div
           onClick={() => {
             showModal();
