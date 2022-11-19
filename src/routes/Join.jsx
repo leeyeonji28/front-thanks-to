@@ -27,8 +27,10 @@ const Join = () => {
       alert("닉네임을 입력해주세요.");
     } else if (joinData.userSay === "") {
       alert("소개말을 입력해주세요.");
-    } else if (imageSrc === "") {
+    } else if (imageSrc === undefined) {
       alert("프로필 사진을 등록해주세요.");
+    } else {
+      userJoin();
     }
   };
 
@@ -108,7 +110,6 @@ const Join = () => {
           onSubmit={(e) => {
             e.preventDefault();
             joinCheck();
-            userJoin();
           }}
         >
           <input

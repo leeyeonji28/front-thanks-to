@@ -58,7 +58,7 @@ const MainList = () => {
   return (
     <div>
       <div>
-        <h3 className="mb-10 sm:text-base text-xl">
+        <h3 className="mb-10 sm:text-base text-base">
           <b className="sm:text-xl text-2xl text-rose-500">Thanks to</b>
           <br />
           그동안 감사했던 기록들을 함께 보아요 😊 &nbsp; (스크롤을 내려서 더

@@ -177,7 +177,7 @@ const PostDetail = ({
               className="block w-full p-4 my-4 rounded-lg border border-gray-300 outline-rose-500"
             ></input>
           ) : (
-            <h3 className="mb-4 text-2xl mt-8">{postTitle}</h3>
+            <h3 className="mb-4 xl:text-2xl text-xl mt-8">{postTitle}</h3>
           )}
           {modify === true ? (
             <textarea

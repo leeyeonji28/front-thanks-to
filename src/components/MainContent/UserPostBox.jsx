@@ -22,7 +22,7 @@ const UserPostBox = ({
   return (
     <div className="group">
       <div className="lg:flex lg:flex-wrap lg:justify-between block">
-        <b className="lg:w-[20%] h-11 lg:py-2 lg:px-0 p-2 lg:text-base text-xl text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
+        <b className="lg:w-[20%] h-11 lg:py-2 lg:px-0 p-2 lg:text-base xl:text-xl text-base text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
           {postDate}
         </b>
         <div
@@ -33,7 +33,9 @@ const UserPostBox = ({
         >
           <span className="block w-full my-5 border-b-0 border-dashed border-2"></span>
           <div className="w-full lg:mb-20 mb-10 p-5 rounded-lg bg-gray-50">
-            <h5 className="mb-2 text-lg font-semibold">{postTitle}</h5>
+            <h5 className="mb-2 lg:text-base xl:text-lg font-semibold">
+              {postTitle}
+            </h5>
             <p>{postContent}</p>
           </div>
         </div>
