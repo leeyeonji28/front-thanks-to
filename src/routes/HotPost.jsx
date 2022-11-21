@@ -67,7 +67,7 @@ const HotPost = () => {
             </div>
           </div>
           {getPostData.length > 3 ? (
-            <div className="lg:block hidden absolute top-[860px] left-[655px] animate-bounce">
+            <div className="lg:block hidden absolute top-[90vh] left-[50vw] animate-bounce">
               <HiChevronDoubleDown className="text-3xl text-gray-300" />
             </div>
           ) : (

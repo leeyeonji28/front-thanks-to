@@ -23,7 +23,7 @@ const MyPostBox = ({
   return (
     <div className="group">
       <div className="lg:flex lg:flex-wrap block w-full">
-        <b className="lg:w-[104px] h-11 mr-5 lg:py-2 lg:px-0 p-2 lg:text-base text-xl text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
+        <b className="xl:w-[130px] lg:w-[104px] h-11 mr-5 lg:py-2 lg:px-0 p-2 lg:text-base xl:text-xl text-base text-center font-semibold leading-10 rounded-lg group-even:bg-gray-200 group-odd:bg-rose-100">
           {postDate}
         </b>
         <div

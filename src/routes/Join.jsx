@@ -75,7 +75,7 @@ const Join = () => {
       alert("회원가입이 완료되었습니다.");
       navigate(`/login`);
     } catch (e) {
-      alert("다른 아이디를 입력해 주세요.");
+      alert("회원가입에 실패하였습니다. 다시 시도해 주세요.");
     }
   };
 
