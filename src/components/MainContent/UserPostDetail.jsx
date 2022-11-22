@@ -97,7 +97,7 @@ const UserPostDetail = ({
           ref={ref}
           className={
             divHeight >= 500
-              ? "max-w-3xl h-[600px] p-4 overflow-y-scroll"
+              ? "max-w-3xl h-[600px] p-4 overflow-y-scroll scrollbar-hide"
               : "max-w-3xl p-4"
           }
         >

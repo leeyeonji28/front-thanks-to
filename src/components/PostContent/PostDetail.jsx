@@ -58,7 +58,7 @@ const PostDetail = ({
           >
             ✕
           </div>
-          {userId === postUserId ? (
+          {userId == postUserId ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <FiMoreHorizontal className="text-3xl" />
@@ -105,7 +105,7 @@ const PostDetail = ({
           ref={ref}
           className={
             divHeight >= 500
-              ? "max-w-3xl h-[600px] p-4 overflow-y-scroll"
+              ? "max-w-3xl h-[600px] p-4 overflow-y-scroll scrollbar-hide"
               : "max-w-3xl p-4"
           }
         >
