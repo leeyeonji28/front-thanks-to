@@ -78,7 +78,7 @@ const PostBox = ({ postId }) => {
         {postData.postLock === "false" ? (
           <div>
             {postData.postImg !== "" ? (
-              <div className="flex justify-center items-center h-72 rounded-t-lg overflow-hidden">
+              <div className="flex justify-center items-center h-auto rounded-t-lg overflow-hidden">
                 <img src={postData.postImg} alt="" />
               </div>
             ) : (

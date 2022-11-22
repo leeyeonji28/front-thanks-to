@@ -29,7 +29,7 @@ const PostSearch = () => {
 
   useEffect(() => {
     getSearchList();
-  });
+  }, []);
 
   if (error) {
     return (

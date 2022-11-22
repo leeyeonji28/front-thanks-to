@@ -70,24 +70,24 @@ const HotPostBox = ({ postId }) => {
   return (
     <div>
       <div
-        className="flex w-full sm:h-[270px] rounded-lg bg-white mb-5 cursor-pointer"
+        className="flex w-full sm:max-h-[270px] rounded-lg bg-white mb-5 cursor-pointer"
         onClick={() => {
           showModal();
         }}
       >
         {hotData.postLock === "false" ? (
-          <div className="w-full sm:flex">
+          <div className="w-full sm:flex ">
             {hotData.postImg !== "" ? (
-              <div className="flex justify-center items-center sm:w-[600px] w-full overflow-hidden sm:rounded-none rounded-t-lg">
+              <div className="flex justify-center items-center sm:w-[600px] w-full overflow-hidden sm:rounded-lg rounded-t-lg">
                 <img src={hotData.postImg} alt="" />
               </div>
             ) : (
               ""
             )}
-            <div className="w-full">
+            <div className="w-full sm:flex sm:flex-col sm:justify-between">
               <div className="p-3">
                 <b className="block mb-3 text-xl">{hotData.postTitle}</b>
-                <p className="sm:h-[7.5rem]">
+                <p>
                   {hotData.postContent.length > 300
                     ? `${hotData.postContent.slice(0, 300)}...`
                     : hotData.postContent}
