@@ -6,7 +6,7 @@ const MainCalendar = () => {
   const [date, setDate] = useState(new Date());
 
   return (
-    <div className="p-7">
+    <div className="2xl:p-7 lg:p-2 p-7">
       <Calendar
         onChange={setDate}
         value={date}
