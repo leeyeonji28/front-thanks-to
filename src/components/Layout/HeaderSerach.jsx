@@ -33,7 +33,10 @@ const HeaderSerach = () => {
               setSearchWord(e.target.value);
             }}
           />
-          <button className="btn btn-square sm:bg-rose-500 bg-rose-300 hover:bg-rose-300 border-0">
+          <button
+            type="button"
+            className="btn btn-square sm:bg-rose-500 bg-rose-300 hover:bg-rose-300 border-0"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"

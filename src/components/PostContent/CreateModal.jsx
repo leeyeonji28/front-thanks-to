@@ -24,6 +24,8 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
       alert("제목을 입력해주세요.");
     } else if (postValue.postContent === "") {
       alert("내용을 입력해주세요.");
+    } else {
+      postCreate();
     }
   };
 
@@ -135,7 +137,6 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
           onSubmit={(e) => {
             e.preventDefault();
             postCheck();
-            postCreate();
           }}
         >
           {/* 이미지 폼 */}
@@ -221,9 +222,6 @@ const CreateModal = ({ userImg, userName, showModal, getUserInfo }) => {
             id="lock"
             onChange={(e) => {
               lockCheck(e);
-            }}
-            onClick={(e) => {
-              console.log(e.target.checked);
             }}
             className="hidden"
           />

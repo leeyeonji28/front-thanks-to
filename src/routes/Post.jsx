@@ -5,7 +5,6 @@ import axios from "axios";
 import { url } from "../utile/url";
 import PostBox from "../components/PostContent/PostBox";
 import Masonry from "react-masonry-css";
-import { HiChevronDoubleDown } from "react-icons/hi";
 import Layout from "../components/Layout/Layout";
 import { useMediaQuery } from "react-responsive";
 

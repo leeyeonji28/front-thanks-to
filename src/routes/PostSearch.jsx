@@ -28,8 +28,11 @@ const PostSearch = () => {
   };
 
   useEffect(() => {
+    window.location.replace(`/#/search/` + keyword);
     getSearchList();
   }, []);
+
+  console.log(searchList);
 
   if (error) {
     return (

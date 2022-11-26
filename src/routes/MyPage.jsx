@@ -4,7 +4,6 @@ import Layout from "../components/Layout/Layout";
 import { CgSpinner } from "react-icons/cg";
 import { url } from "../utile/url";
 import { useParams } from "react-router-dom";
-import { HiChevronDoubleDown } from "react-icons/hi";
 import MyPostBox from "../components/MypageContent/MyPostBox";
 
 const MyPage = () => {
