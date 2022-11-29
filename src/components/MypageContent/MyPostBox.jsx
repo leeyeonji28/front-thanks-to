@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { loginState } from "../../recoil/loginState";
 import MyPostDetail from "./MyPostDetail";
 
 const MyPostBox = ({
@@ -15,9 +17,18 @@ const MyPostBox = ({
   getUserInfo,
 }) => {
   const [modal, setModal] = useState(false);
+  const userId = useRecoilValue(loginState);
 
   function showModal() {
-    setModal(!modal);
+    if (postLock === "true") {
+      if (postUserId == userId) {
+        setModal(!modal);
+      } else {
+        alert("비밀글은 작성자만 열람 가능합니다.");
+      }
+    } else {
+      setModal(!modal);
+    }
   }
 
   return (
@@ -32,11 +43,22 @@ const MyPostBox = ({
             showModal();
           }}
         >
-          <span className="block w-full my-5 border-b-0 border-dashed border-2"></span>
-          <div className="w-full lg:mb-20 mb-10 p-5 rounded-lg bg-gray-50">
-            <h5 className="mb-2 text-lg font-semibold">{postTitle}</h5>
-            <p>{postContent}</p>
-          </div>
+          {postLock === "false" ? (
+            <div>
+              <span className="block w-full my-5 border-b-0 border-dashed border-2"></span>
+              <div className="w-full lg:mb-20 mb-10 p-5 rounded-lg bg-gray-50">
+                <h5 className="mb-2 text-lg font-semibold">{postTitle}</h5>
+                <p>{postContent}</p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <span className="block w-full my-5 border-b-0 border-dashed border-2"></span>
+              <div className="w-full lg:mb-20 mb-10 p-5 rounded-lg bg-gray-50">
+                <h5 className="mb-2 text-lg font-semibold">비밀글 입니다.</h5>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

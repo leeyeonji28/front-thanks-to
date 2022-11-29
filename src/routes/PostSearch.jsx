@@ -32,8 +32,6 @@ const PostSearch = () => {
     getSearchList();
   }, []);
 
-  console.log(searchList);
-
   if (error) {
     return (
       <div className="flex justify-center items-center w-full h-full">

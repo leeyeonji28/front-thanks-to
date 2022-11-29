@@ -10,6 +10,7 @@ import { url } from "../../utile/url";
 import { IoNotifications } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { loginState } from "../../recoil/loginState";
+import { Link } from "react-router-dom";
 
 const PostDetail = ({
   postId,
@@ -110,20 +111,22 @@ const PostDetail = ({
           }
         >
           <div className="flex justify-between items-center pb-8 border-b">
-            <div className="flex items-center">
-              <div className="w-16 mr-4 border shadow-lg rounded-lg overflow-hidden">
-                <img src={userImg} alt="" className="h-16" />
+            <Link to={`/mypage/${postUserId}`}>
+              <div className="flex items-center">
+                <div className="w-16 mr-4 border shadow-lg rounded-lg overflow-hidden">
+                  <img src={userImg} alt="" className="h-16" />
+                </div>
+                <div>
+                  <b className="block text-xl">{userNick}</b>
+                  <span className="text-gray-500">{postDate}</span>
+                  {postLock === "true" ? (
+                    <HiLockClosed className="inline-block ml-2" />
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
-              <div>
-                <b className="block text-xl">{userNick}</b>
-                <span className="text-gray-500">{postDate}</span>
-                {postLock === "true" ? (
-                  <HiLockClosed className="inline-block ml-2" />
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
+            </Link>
             <div
               className="flex items-center text-xl cursor-pointer"
               onClick={async () => {

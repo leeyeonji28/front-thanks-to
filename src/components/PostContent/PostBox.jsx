@@ -39,7 +39,7 @@ const PostBox = ({ postId }) => {
 
   function showModal() {
     if (postData.postLock === "true") {
-      if (postUserId === userId) {
+      if (postUserId == userId) {
         setModal(!modal);
       } else {
         alert("비밀글은 작성자만 열람 가능합니다.");
